@@ -8,7 +8,7 @@ import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
 
-class Driver {
+public class Driver {
 
     private Driver(){
         // Driver constructor'ini gorunur yapip
