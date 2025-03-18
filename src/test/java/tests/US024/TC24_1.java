@@ -1,4 +1,4 @@
 package tests.US024;
 
-public class TC5_1 {
+public class TC24_1 {
 }
