@@ -1,4 +1,4 @@
 package tests.US030;
 
-public class TC2_1 {
+public class TC30_1 {
 }

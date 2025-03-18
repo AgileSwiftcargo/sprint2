@@ -1,4 +1,4 @@
 package tests.US016;
 
-public class TC1_1 {
+public class TC16_2 {
 }
