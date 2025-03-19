@@ -12,7 +12,6 @@ public class Alpay {
 
     }
 
-
     //Anasayfa Header Logo
     @FindBy(xpath = "(//*[@class='logo'])[1]")
     public WebElement headerLogo;
