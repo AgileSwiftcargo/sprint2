@@ -47,5 +47,37 @@ public class Alpay {
     @FindBy(xpath = "//a[.='Contact']")
     public WebElement navContact;
 
+    //Merchant Dashboard Profil //------------------------
+
+    // Profil Resmi
+    @FindBy(xpath = "(//*[@class='nav-link nav-user-img'])[1]")
+    public WebElement profilResmi;
+
+    // Profil Butonu
+    @FindBy(xpath = "(//*[.='Profile'])[1]")
+    public WebElement profilButonu;
+
+    //Logout Butonu
+    @FindBy(xpath = "(//*[contains(@href, 'logout')])[1]")
+    public WebElement loguotButonu;
+
+    //Profil Edit Butonu
+    @FindBy(xpath = "//*[.=' Edit']")
+    public WebElement profilEditButonu;
+
+
+    // Parcel Menusu//-----------------
+
+    // Parcel Menu Basligi
+    @FindBy(xpath = "(//*[.='Parcels'])[3]")
+    public WebElement parcelmenusu;
+
+
+
+
+
+
+
+
 
 }
