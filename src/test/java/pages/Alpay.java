@@ -73,6 +73,11 @@ public class Alpay {
     @FindBy(xpath = "(//*[.='Parcels'])[3]")
     public WebElement parcelmenusu;
 
+    // Parcel Menu Basligi
+    @FindBy(xpath = "(//*[.='Parcels'])[3]")
+    public WebElement parcelgmenusu;
+
+
 
 
 
