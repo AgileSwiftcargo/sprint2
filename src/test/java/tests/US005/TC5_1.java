@@ -1,4 +1,4 @@
-package tests.US024;
+package tests.US005;
 
 public class TC5_1 {
 }
