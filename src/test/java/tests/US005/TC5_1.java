@@ -1,4 +1,43 @@
 package tests.US005;
 
-public class TC5_1 {
+import com.aventstack.extentreports.ExtentTest;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import pages.Kerem;
+import utilities.ConfigReader;
+import utilities.Driver;
+import utilities.TestBaseRapor;
+
+
+public class TC5_1 extends TestBaseRapor {
+
+    Kerem kerem ;
+
+    @Test
+    public void servisYazisiKontrolTesti (){
+
+        extentTest = extentReports.createTest("Servislerimiz Yazisi Kontrol Testi" +
+                "Kullanici ana sayfada servislerimiz alanını görüntülemeli");
+
+        // Kullanıcı, https://qa.agileswiftcargo.com/ adresine gider.
+        Driver.getDriver().get(ConfigReader.getProperty("Url"));
+        extentTest.info("Kullanici agileswiftcargo ana sayfasina gider");
+
+        // Ana sayfada "Our Services" yazısının bulunduğunu kontrol eder
+        kerem = new Kerem();
+        String expectedYazi = "Our Services";
+        String actualYazi = kerem.ourServicesYaziElementi.getText();
+
+        Assert.assertEquals(actualYazi,expectedYazi);
+        extentTest.pass("Servis alanının doğru bir şekilde görüntülendiğini doğrular");
+
+
+        // sayfayi kapatir
+        extentTest.info("sayfayi kapatir");
+
+
+
+
+    }
 }
