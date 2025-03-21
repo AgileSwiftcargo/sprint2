@@ -23,26 +23,30 @@ public class Furkan {
     @FindBy(xpath = "/html/body/section[4]/div/div[2]")
     public WebElement WhyAgileSwiftCargoBox;
 
+    //Why Agile Swift Cargo Bölümü Text
+    @FindBy(xpath = "(//*[.='Why Agile Swift Cargo'])[2]")
+    public WebElement WhyAgileSwiftCargoText;
+
     //us014
 
     //Agile Swift Cargo Linkedin Sosyal Medya Butonları
-    @FindBy(xpath = "/html/body/footer[1]/div/div/div/div[4]/div/div/div[1]")
+    @FindBy(xpath = "//a[@title='Linkedin']")
     public WebElement AgileSwiftCargoLinkedIn;
 
     //Agile Swift Cargo Facebook Sosyal Medya Butonları
-    @FindBy(xpath = "/html/body/footer[1]/div/div/div/div[4]/div/div/div[2]")
+    @FindBy(xpath = "//a[@title='facebook']")
     public WebElement AgileSwiftCargoFacebook;
 
     //Agile Swift Cargo Instagram Sosyal Medya Butonları
-    @FindBy(xpath = "/html/body/footer[1]/div/div/div/div[4]/div/div/div[3]")
+    @FindBy(xpath = "//a[@title='Instagram']")
     public WebElement AgileSwiftCargoInstagram;
 
     //Agile Swift Cargo Youtube Sosyal Medya Butonları
-    @FindBy(xpath = "/html/body/footer[1]/div/div/div/div[4]/div/div/div[4]")
+    @FindBy(xpath = "//a[@title='Youtube']")
     public WebElement AgileSwiftCargoYoutube;
 
     //Agile Swift Cargo Skype Sosyal Medya Butonları
-    @FindBy(xpath = "/html/body/footer[1]/div/div/div/div[4]/div/div/div[1]")
+    @FindBy(xpath = "//a[@title='Skype']")
     public WebElement AgileSwiftCargoSkype;
 
     //Agile Swift Cargo Sosyal Medya Butonları
