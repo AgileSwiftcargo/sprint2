@@ -1,35 +1,28 @@
 package tests.US002;
 
-import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.Alpay;
-import pages.Anasayfa;
 import utilities.ConfigReader;
-import utilities.Driver;
-import utilities.ReusableMethods;
+import utilities.CrossTestBaseRapor;
 
-public class TC2_1 {
+public class TC2_1 extends CrossTestBaseRapor {
 
-@Test
-    public void baslikVurgusu(){
+    @Test
+    public void TestAnasayfaHeader(){
 
-    Driver.getDriver().get("https://qa.agileswiftcargo.com/faq-list");
+    extentTest = extentReports.createTest("Anasayfaya Header Testi",
+            "Header Kismi ve Navigasyon Bari Olmali");
 
-    WebElement element = Driver.getDriver().findElement(By.xpath(("//a[.='FAQ']")));
+    driver.get(ConfigReader.getProperty("Url"));
+    extentTest.info("Kullanici Anasayfaya gider");
 
-    String className = element.getAttribute("class");
-    System.out.println(className);
+    driver.findElement(By.xpath(("(//*[contains(@class, 'navbar')])[1]"))).isDisplayed();
+    extentTest.pass("Header kisminin oldugunu dogrular");
 
-    // Check if the class name contains the desired text
-    Assert.assertTrue(className.contains("active"), "Baslik vurgulu degil");
+    driver.findElement(By.xpath(("(//*[contains(@class, 'nav-link')])[1]"))).isDisplayed();
+    extentTest.pass("Menu basliklarinin gorundugunu dogrular");
 
-    Driver.quitDriver();
+    extentTest.info("Sayfayi Kapatir");
 
 }
-
-
 }
