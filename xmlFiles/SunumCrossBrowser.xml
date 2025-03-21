@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
 <!--
-        Sunumda Calistirilacak Testler
+        Sunumda Calistirilacak Testler Burda Olacak
 -->
 
 
@@ -11,6 +11,7 @@
         <parameter name="kullanilacakBrowser" value="chrome"></parameter>
         <packages>
             <package name="tests.US002"></package>
+            <package name="tests.US010"></package>
         </packages>
     </test>
 
@@ -18,6 +19,7 @@
         <parameter name="kullanilacakBrowser" value="edge"></parameter>
         <packages>
             <package name="tests.US002"></package>
+            <package name="tests.US010"></package>
         </packages>
     </test>
 

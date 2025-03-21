@@ -24,12 +24,6 @@ public abstract class CrossTestBaseRapor {
 
     }
 
-    @AfterMethod
-    public void tearDown(){
-
-        DriverCross.quitDriver();
-    }
-
 
     public static ExtentReports extentReports; //extent report'a ilk atamayi yapar
     protected static ExtentTest extentTest; // test pass veya failed gibi bilgileri kaydeder. Ayrica ekran resmi icin de kullaniriz
@@ -72,6 +66,8 @@ public abstract class CrossTestBaseRapor {
         } else if (result.getStatus() == ITestResult.SKIP) { // eğer test çalıştırılmadan geçilmezse
             extentTest.skip("Test Case is skipped: " + result.getName()); // Ignore olanlar
         }
+
+        DriverCross.quitDriver();
 
     }
 
