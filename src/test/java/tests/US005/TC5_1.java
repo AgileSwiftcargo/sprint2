@@ -32,7 +32,8 @@ public class TC5_1 extends TestBaseRapor {
 
 
         // sayfayi kapatir
-        extentTest.info("sayfayi kapatir");
+        extentTest.info("sayfayi kapatirrr");
+
 
 
 
