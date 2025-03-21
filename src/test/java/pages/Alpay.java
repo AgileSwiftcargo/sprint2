@@ -66,21 +66,23 @@ public class Alpay {
     public WebElement profilEditButonu;
 
 
-
     // Parcel Menusu//-----------------
 
     // Parcel Menu Basligi
     @FindBy(xpath = "(//*[.='Parcels'])[3]")
     public WebElement parcelmenusu;
 
-    // Parcel Menu Basligi
-    @FindBy(xpath = "(//*[.='Parcels'])[3]")
-    public WebElement parcelgmenusu;
+    // Parcel Ekleme Butonu
+    @FindBy(xpath = "//*[.=' Add']")
+    public WebElement parcelEkle;
 
+    // Parcel Ekleme Formu Save Butonu
+    @FindBy(xpath = "//*[.='Save']")
+    public WebElement parcelSave;
 
-
-
-
+    // Parcel Ekleme Formu Success Mesaji
+    @FindBy(xpath = "//*[.='Success']")
+    public WebElement parcelSuccess;
 
 
 

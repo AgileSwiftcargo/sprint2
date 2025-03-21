@@ -1,13 +1,11 @@
 package tests.US005;
 
-import com.aventstack.extentreports.ExtentTest;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Kerem;
 import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.TestBaseRapor;
+import utilities.CrossTestBaseRapor;
 
 
 public class TC5_1 extends TestBaseRapor {
