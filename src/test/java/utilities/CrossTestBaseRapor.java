@@ -3,16 +3,32 @@ package utilities;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public abstract class TestBaseRapor {
+public abstract class CrossTestBaseRapor {
+
+    // TestBaseCross
+    protected WebDriver driver;
+
+    @Parameters("kullanilacakBrowser")
+    @BeforeMethod
+    public void setUp(@Optional String kullanilacakBrowser){
+
+        driver= DriverCross.getDriver(kullanilacakBrowser);
+
+    }
+
+    @AfterMethod
+    public void tearDown(){
+
+        DriverCross.quitDriver();
+    }
 
 
     public static ExtentReports extentReports; //extent report'a ilk atamayi yapar
@@ -20,8 +36,9 @@ public abstract class TestBaseRapor {
     protected static ExtentSparkReporter extentSparkReporter; // Html raporu duzenler
 
     // Test işlemine başlamadan hemen önce (test methodundan önce değil, tüm test işleminden önce)
+    @Parameters("kullanilacakBrowser")
     @BeforeTest(alwaysRun = true) // alwaysRun : her zaman çalıştır.
-    public void setUpTest() {
+    public void setUpTest(@Optional String kullanilacakBrowser) {
         extentReports = new ExtentReports(); // Raporlamayi baslatir
         //rapor oluştuktan sonra raporunuz nereye eklensin istiyorsanız buraya yazıyorsunuz.
         String date = new SimpleDateFormat("_yyyyMMdd_HHmmss").format(new Date());
@@ -36,7 +53,7 @@ public abstract class TestBaseRapor {
 
         // İstediğiniz bilgileri buraya ekeyebiliyorsunuz.
         extentReports.setSystemInfo("Enviroment","Test");
-        extentReports.setSystemInfo("Browser", ConfigReader.getProperty("browser")); // chrome, firefox
+        extentReports.setSystemInfo("Browser", kullanilacakBrowser); // chrome, firefox
         extentReports.setSystemInfo("Automation Engineer", "Alpay Ciftci");
         extentSparkReporter.config().setDocumentTitle("TestNG Test");
         extentSparkReporter.config().setReportName("Html Reports");
@@ -55,7 +72,6 @@ public abstract class TestBaseRapor {
         } else if (result.getStatus() == ITestResult.SKIP) { // eğer test çalıştırılmadan geçilmezse
             extentTest.skip("Test Case is skipped: " + result.getName()); // Ignore olanlar
         }
-        Driver.quitDriver();
 
     }
 

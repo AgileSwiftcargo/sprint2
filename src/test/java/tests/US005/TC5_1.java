@@ -1,7 +1,5 @@
 package tests.US005;
 
-import com.aventstack.extentreports.ExtentTest;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Kerem;
