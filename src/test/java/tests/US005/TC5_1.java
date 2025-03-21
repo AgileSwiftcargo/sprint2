@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import pages.Kerem;
 import utilities.ConfigReader;
 import utilities.Driver;
-import utilities.CrossTestBaseRapor;
+import utilities.TestBaseRapor;
 
 
 public class TC5_1 extends TestBaseRapor {
