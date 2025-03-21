@@ -18,16 +18,16 @@ public class Kerem {
 
 
     //Servis detay sayfalarına erişim butonları
-    @FindBy(xpath = "(//i[@class='fa fa-arrow-right'])[1]")
+    @FindBy(xpath = "(//a[@class='text-primary'])[1]")
     public WebElement eCommerceDeliveryButonu;
 
-    @FindBy( xpath = "(//i[@class='fa fa-arrow-right'])[2]")
+    @FindBy( xpath = "(//a[@class='text-primary'])[3]")
     public WebElement pickDropButonu;
 
-    @FindBy( xpath = "(//i[@class='fa fa-arrow-right'])[3]")
+    @FindBy( xpath = "(//a[@class='text-primary'])[2]")
     public WebElement packageingButonu;
 
-    @FindBy ( xpath = "(//i[@class='fa fa-arrow-right'])[4]")
+    @FindBy ( xpath = "(//a[@class='text-primary'])[1]")
     public WebElement warehousingButonu;
 
     @FindBy ( xpath = "//*[.='  E-Commerce delivery ']")
