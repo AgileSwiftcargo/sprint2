@@ -2,6 +2,7 @@ package tests.US001;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.TestBaseRapor;
 
@@ -12,14 +13,20 @@ public class TC1_2 extends TestBaseRapor {
     @Test
     public void anasayfaGoruntulenmeSureTesti (){
 
+        extentTest = extentReports.createTest("Anasayfa Görüntülenme Süre Testi",
+                "Anasayfanın 4 saniye'nin altında görüntülenmeli");
+
         LocalTime start = LocalTime.now();
 
-        Driver.getDriver().get("https://qa.agileswiftcargo.com/");
+        Driver.getDriver().get(ConfigReader.getProperty("Url"));
 
         LocalTime finish = LocalTime.now();
         int millis = (int) Duration.between(start, finish).toSeconds();
         System.out.println("Anasayfa yuklenme suresi " + millis + " seconds");
 
         Assert.assertTrue(millis < 4);
+        extentTest.pass("Anasayfanın 4 saniye'nin altında görüntülendiğini doğrular");
+
+        extentTest.info("sayfayı kapatır");
     }
 }
