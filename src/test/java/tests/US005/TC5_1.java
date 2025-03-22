@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Kerem;
 import utilities.ConfigReader;
+import utilities.CrossTestBaseRapor;
 import utilities.Driver;
 import utilities.TestBaseRapor;
 

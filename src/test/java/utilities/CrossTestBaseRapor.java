@@ -6,6 +6,7 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -59,7 +60,7 @@ public abstract class CrossTestBaseRapor {
     public void tearDownMethod(ITestResult result) throws IOException {
 
         if (result.getStatus() == ITestResult.FAILURE) { // eğer testin sonucu başarısızsa
-            String resimYolu = ReusableMethods.raporaResimEkle(result.getName());
+            String resimYolu = CrossReusableMethods.raporaResimEkle(result.getName());
             extentTest.fail(result.getName());
             extentTest.addScreenCaptureFromPath(resimYolu);
             extentTest.fail(result.getThrowable());
@@ -69,6 +70,13 @@ public abstract class CrossTestBaseRapor {
 
         DriverCross.quitDriver();
 
+    }
+
+    public void captureFailure(String testIsmi) throws IOException {
+
+            String resimYolu = CrossReusableMethods.raporaResimEkle(testIsmi);
+            extentTest.fail(testIsmi);
+            extentTest.addScreenCaptureFromPath(resimYolu);
     }
 
 
