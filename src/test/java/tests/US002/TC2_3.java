@@ -4,10 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.Assert;
-import org.testng.ITestResult;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import pages.Locator;
 import utilities.ConfigReader;
 import utilities.CrossTestBaseRapor;
 import utilities.ReusableMethods;
@@ -21,6 +20,8 @@ public class TC2_3 extends CrossTestBaseRapor {
     @Test
     public void MenuBasliklariSecimi() throws IOException {
 
+        Locator locator = new Locator();
+
         SoftAssert softAssert = new SoftAssert();
         Actions actions = new Actions(driver);
 
@@ -31,8 +32,12 @@ public class TC2_3 extends CrossTestBaseRapor {
         softAssert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/");
         extentTest.pass("Kullanici Anasayfaya gider");
 
+        List<WebElement> navLinks = driver.findElements(By.xpath("//*[contains(@class, 'nav-link')]"));
 
-        softAssert.assertTrue(driver.findElement(By.xpath("(//*[contains(@class, 'nav-link')])[1]")).isDisplayed());
+// Loop through all the nav-link elements and verify if each is displayed
+        for (int i = 0; i < navLinks.size(); i++) {
+            softAssert.assertTrue(navLinks.get(i).isDisplayed(), "Nav link at index " + (i + 1) + " is not displayed.");
+        }
         extentTest.pass("Menu basliklarinin gorundugunu dogrular");
 
 
@@ -40,48 +45,33 @@ public class TC2_3 extends CrossTestBaseRapor {
         for (String menu : menus) {
             WebElement link = driver.findElement(By.xpath("//a[.='" + menu + "']"));
             softAssert.assertEquals(link.getCssValue("cursor"), "pointer");
-            extentTest.pass(menu + " is clickable");
+            extentTest.pass(menu + " tiklanabilir ");
         }
-
-
-        softAssert.assertEquals(driver.findElement(By.xpath("//a[.='Contact']")).getCssValue("cursor"),"pointer");
         extentTest.pass("Menu basliklarinin tiklanabilir oldugunu kontrol eder");
 
 
-        driver.findElement(By.xpath("//a[.='Home']")).click();
-        softAssert.assertTrue(driver.findElement(By.xpath("//a[.='Home']")).getAttribute("class").contains("active"));
-        extentTest.pass("Home'a tiklar, secili ve vurgulanmis oldugunu gozlemler");
+        for (String menu : menus) {
 
+            try {
+                driver.findElement(By.xpath("//a[.='"+ menu +"']")).click();
 
+                actions.sendKeys(Keys.HOME).perform(); // Scroll to the top
+                actions.sendKeys(Keys.HOME).perform();
 
+                ReusableMethods.bekle(1);
+                boolean isActive = driver.findElement(By.xpath("//a[.='"+ menu +"']"))
+                        .getAttribute("class").contains("active");
+                if (!isActive) {
+                    throw new AssertionError(menu + " Linki Secili gozukmuyor");
+                }
+                extentTest.info(menu + " tiklar, secili ve vurgulanmis oldugunu gozlemler");
+            } catch (AssertionError e) {
+                captureFailure(menu +  " Linki Secili gozukmuyor");
+                softAssert.fail(e.getMessage());
 
-        try {
-            driver.findElement(By.xpath("//a[.='Pricing']")).click();
-
-            actions.sendKeys(Keys.HOME).perform(); // Scroll to the top
-            ReusableMethods.bekle(1);
-            boolean isActive = driver.findElement(By.xpath("//a[.='Pricing']"))
-                    .getAttribute("class").contains("active");
-            if (!isActive) {
-                throw new AssertionError("Pricing Linki Secili gozukmuyor");
             }
-            extentTest.info("Pricing'e tiklar, secili ve vurgulanmis oldugunu gozlemler");
-        } catch (AssertionError e) {
-            System.out.println("Assertion captured");
-            captureFailure("Pricing Linki Secili gozukmuyor");
-            softAssert.fail(e.getMessage());
 
         }
-
-
-        driver.findElement(By.xpath("//a[.='Tracking']")).click();
-        softAssert.assertTrue(driver.findElement(By.xpath("//a[.='Tracking']")).getAttribute("class").contains("active"));
-        extentTest.pass("Tracking'e tiklar, secili ve vurgulanmis oldugunu gozlemler");
-
-
-        driver.findElement(By.xpath("//a[.='Blogs']")).click();
-        softAssert.assertTrue(driver.findElement(By.xpath("//a[.='Blogs']")).getAttribute("class").contains("active"));
-        extentTest.pass("Blogs'a tiklar, secili ve vurgulanmis oldugunu gozlemler");
 
         softAssert.assertAll();
     }
