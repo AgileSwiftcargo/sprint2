@@ -61,13 +61,8 @@ public class TC10_4 extends CrossTestBaseRapor {
         }
 
 
-
-
         //Assert.assertTrue(birincidateTime.isAfter(ikincidateTime));
         extentTest.pass("1. blogun tarihi ile 2. blogun tarihini karsilastirir");
-
-
-
 
 
     }
