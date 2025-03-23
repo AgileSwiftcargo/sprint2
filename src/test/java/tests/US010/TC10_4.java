@@ -1,7 +1,5 @@
 package tests.US010;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Locator;
@@ -11,9 +9,7 @@ import utilities.ReusableMethods;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.time.format.DateTimeFormatter;
-import java.time.*;
-
+import java.util.Locale;
 
 public class TC10_4 extends CrossTestBaseRapor {
 
@@ -41,31 +37,24 @@ public class TC10_4 extends CrossTestBaseRapor {
         Assert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/get-blogs");
         extentTest.pass("Blog yazisin ilkine tiklar ve geri butonuna tiklar");
 
-
         String birinciBlogTarihi = locator.blogsYayinTarihi.getText();
         String ikinciBlogTarihi = locator.blogs2YayinTarihi.getText();
 
-        System.out.println(birinciBlogTarihi);
-        System.out.println(ikinciBlogTarihi);
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy hh:mm A");
-
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy hh:mm a", Locale.ENGLISH);
 
         try {
             LocalDateTime birincidateTime = LocalDateTime.parse(birinciBlogTarihi, formatter);
             LocalDateTime ikincidateTime = LocalDateTime.parse(ikinciBlogTarihi, formatter);
-            System.out.println("Generated LocalDateTime: " + birincidateTime);
-            System.out.println("Generated LocalDateTime: " + ikincidateTime);
+
+            Assert.assertTrue(birincidateTime.isAfter(ikincidateTime));
+            extentTest.pass("1. blogun tarihi ile 2. blogun tarihini karsilastirir");
+
         } catch (DateTimeParseException e) {
             System.out.println("Error parsing date-time: " + e.getMessage());
         }
 
 
-        //Assert.assertTrue(birincidateTime.isAfter(ikincidateTime));
-        extentTest.pass("1. blogun tarihi ile 2. blogun tarihini karsilastirir");
 
 
     }
-
-
 }
