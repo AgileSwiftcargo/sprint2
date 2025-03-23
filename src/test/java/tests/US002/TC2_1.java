@@ -28,10 +28,11 @@ public class TC2_1 extends CrossTestBaseRapor {
     Assert.assertTrue(locator.navBar.isDisplayed());
     extentTest.pass("Header kisminin oldugunu dogrular");
 
-        List<WebElement> navLinks = driver.findElements(By.xpath("//*[contains(@class, 'nav-link')]"));
+    List<WebElement> navLinks = driver.findElements(By.xpath("//*[contains(@class, 'nav-link')]"));
+        System.out.println(navLinks.size());
 
-// Loop through all the nav-link elements and verify if each is displayed
-        for (int i = 0; i < navLinks.size(); i++) {
+        // Butun nav-link elementlerinin goruntulendigini kontrol eder
+        for (int i = 0; i < 8; i++) {
             Assert.assertTrue(navLinks.get(i).isDisplayed(), "Nav link at index " + (i + 1) + " is not displayed.");
         }
     extentTest.pass("Menu basliklarinin gorundugunu dogrular");

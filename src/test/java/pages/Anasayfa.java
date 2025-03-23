@@ -7,6 +7,9 @@ import utilities.Driver;
 
 public class Anasayfa {
 
+    // Testlerini TestBaseRapor'a extends yapanlar bu Anasayfa page'sini, Merchant ve Admin Pages lerini kullanmali.
+    // Testlerini CrossTestBaseRapor'a extends yapanlar Locator Page'ini kullanmali.
+
     public Anasayfa (){
         PageFactory.initElements(Driver.getDriver(),this);
     }
