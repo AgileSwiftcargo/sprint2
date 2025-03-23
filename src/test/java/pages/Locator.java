@@ -8,6 +8,9 @@ import static utilities.DriverCross.driver;
 
 public class Locator {
 
+    // Bu Locator Havuzunu sadece Testlerini CrossTestBaseRapor'a extends yapanlar kullanabilir.
+    // Testlerini TestBaseRapor'a extends yapanlar Anasayfa ve Merchant Pages lerini kullanmali.
+
     public Locator() {
         PageFactory.initElements(driver, this);
     }
@@ -651,36 +654,39 @@ public class Locator {
     public WebElement ProfilresmiButonu;
 
     //registir busines name butonu//
-    @FindBy(xpath = "(//*[.='form-control form-control-lg'])[1]")
-    public WebElement RegisterbusNamebutonu;
+    @FindBy(xpath = "//*[@id='business_name']")
+    public WebElement registerbusNamebutonu;
 
     //name surname butonu//
-    @FindBy(xpath = "(//*[.='form-control form-control-lg'])[2]")
+    @FindBy(xpath = "//*[@id='full_name']")
     public WebElement namesurNameButonu;
 
     //registir   mobil butonu//
-    @FindBy(xpath = "(//*[.='form-control form-control-lg'])[3]")
-    public WebElement MailButonu;
+    @FindBy(xpath = "//*[@id='mobile']")
+    public WebElement mobileButonu;
 
     //registir  pasword butonu//
-    @FindBy(xpath = "(//*[.='form-control form-control-lg'])[4]")
+    @FindBy(xpath = "//*[@id='password']")
     public WebElement paswordButonu;
 
     //hub seciniz butonu//
     @FindBy(xpath = "(//*[.='Select Hub'])[5]")
-    public WebElement Hubbutonu;
+    public WebElement hubSelect;
+
+    @FindBy(xpath = " //*[@class='select2-search__field']")
+    public WebElement hubSelectEntry;
 
     //adres bilgisi//
-    @FindBy(xpath = "//*[@id=\"address\"]")
-    public WebElement AdresButonu;
+    @FindBy(xpath = "//*[@id='address']")
+    public WebElement adresButonu;
 
     //asc gizlilik sartını kabul etme //
     @FindBy(xpath = "//*[@id='merchant_registration_checkbox']")
-    public WebElement sartlarıKabuletbutonu;
+    public WebElement sartlariKabuletbutonu;
 
     //hesabı kaydetme //
     @FindBy(xpath = "//*[@id='merchant_registration_submit']")
-    public WebElement Kaydetbutonu;
+    public WebElement kaydetbutonu;
 
     //Reports Menu Butonu
     @FindBy(xpath = "/html/body/div[1]/div[4]/ul/li[7]/a")
@@ -727,6 +733,39 @@ public class Locator {
     //Admin profile dosya seç butonu
     @FindBy(xpath = "//input[@placeholder='Enter Image']")
     public WebElement adminProfileFileButton;
+
+    @FindBy(xpath = "//*[text()='  Blogs ']")
+    public WebElement blogsYazisi;
+
+    @FindBy(xpath = "(//*[@class='card-title'])[1]")
+    public WebElement blogsYaziGirisi;
+
+    @FindBy(xpath = "//h3[contains(@class, 'my-4')]")
+    public WebElement blogsYaziBasligi;
+
+    @FindBy(xpath = "(//*[@class='text-body-secondary'])[1]")
+    public WebElement blogsYazarAdi;
+
+    @FindBy(xpath = "(//*[@class='text-body-secondary'])[2]")
+    public WebElement blogsYayinTarihi;
+
+    @FindBy(xpath = "(//*[@class='text-body-secondary'])[4]")
+    public WebElement blogs2YayinTarihi;
+
+    @FindBy(xpath = "//*[@class='text-body-secondary me-2']")
+    public WebElement blogsGoruntulenmeSayisi;
+
+    @FindBy(xpath = "//*[@class='page-content']")
+    public WebElement blogsYaziIcerigi;
+
+    @FindBy(xpath = "(//*[@class='card-title'])[1]")
+    public WebElement blogsIlkBlog;
+
+    @FindBy(xpath = "(//*[@class='card-title'])[2]")
+    public WebElement blogsIkinciBlog;
+
+
+
 
 
 }

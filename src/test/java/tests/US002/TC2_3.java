@@ -1,7 +1,7 @@
 package tests.US002;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
@@ -23,7 +23,6 @@ public class TC2_3 extends CrossTestBaseRapor {
         Locator locator = new Locator();
 
         SoftAssert softAssert = new SoftAssert();
-        Actions actions = new Actions(driver);
 
         extentTest = extentReports.createTest("Menu Basliklari Secimi Testi",
                 "Menu basliklari tiklandiginda secili ve vurgulu gozukmeli");
@@ -40,31 +39,29 @@ public class TC2_3 extends CrossTestBaseRapor {
         }
         extentTest.pass("Menu basliklarinin gorundugunu dogrular");
 
-
         List<String> menus = Arrays.asList("Home", "Pricing", "Tracking", "Blogs", "About", "FAQ", "Contact");
         for (String menu : menus) {
             WebElement link = driver.findElement(By.xpath("//a[.='" + menu + "']"));
             softAssert.assertEquals(link.getCssValue("cursor"), "pointer");
             extentTest.pass(menu + " tiklanabilir ");
         }
-        extentTest.pass("Menu basliklarinin tiklanabilir oldugunu kontrol eder");
-
 
         for (String menu : menus) {
 
             try {
                 driver.findElement(By.xpath("//a[.='"+ menu +"']")).click();
 
-                actions.sendKeys(Keys.HOME).perform(); // Scroll to the top
-                actions.sendKeys(Keys.HOME).perform();
+                // Sayfayi en Yukari kaldirir
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("window.scrollTo(0, 0);");
 
-                ReusableMethods.bekle(1);
+
                 boolean isActive = driver.findElement(By.xpath("//a[.='"+ menu +"']"))
                         .getAttribute("class").contains("active");
                 if (!isActive) {
                     throw new AssertionError(menu + " Linki Secili gozukmuyor");
                 }
-                extentTest.info(menu + " tiklar, secili ve vurgulanmis oldugunu gozlemler");
+                extentTest.pass(menu + " tiklar, secili ve vurgulanmis oldugunu gozlemler");
             } catch (AssertionError e) {
                 captureFailure(menu +  " Linki Secili gozukmuyor");
                 softAssert.fail(e.getMessage());
