@@ -40,6 +40,7 @@ public class TC2_3 extends CrossTestBaseRapor {
         extentTest.pass("Menu basliklarinin gorundugunu dogrular");
 
         List<String> menus = Arrays.asList("Home", "Pricing", "Tracking", "Blogs", "About", "FAQ", "Contact");
+
         for (String menu : menus) {
             WebElement link = driver.findElement(By.xpath("//a[.='" + menu + "']"));
             softAssert.assertEquals(link.getCssValue("cursor"), "pointer");
