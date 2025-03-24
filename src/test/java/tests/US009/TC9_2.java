@@ -11,6 +11,7 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 
 public class TC9_2 extends CrossTestBaseRapor {
+
     @Test
     public void referansFirmlariTesti() {
 

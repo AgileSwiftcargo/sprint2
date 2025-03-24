@@ -93,6 +93,7 @@ public class TC23_3 extends CrossTestBaseRapor {
         ReusableMethods.bekle(1);
 
         extentTest.info("Sayfayı Kapatır");
+        Driver.quitDriver();
 
     }
 }

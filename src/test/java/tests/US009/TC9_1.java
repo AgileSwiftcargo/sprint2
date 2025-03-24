@@ -18,12 +18,12 @@ public class TC9_1 extends CrossTestBaseRapor {
         extentTest = extentReports.createTest("Anasayfadaki Referans Firmalarını Görüntüleme Testi",
                 "Anasayfa Firmaları Erişilebilir ve Görüntülenebilir olmalı");
 
-        Driver.getDriver().get(ConfigReader.getProperty("Url"));
+        driver.get(ConfigReader.getProperty("Url"));
         extentTest.info("Kullanıcı Anasayfaya Gider");
 
         String agileSwiftHandle = Driver.getDriver().getWindowHandle();
 
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,2400)");
         extentTest.info("Kullanıcı Anasayfayı Referans Firmaları Menüsüne Kaydırır");
 
