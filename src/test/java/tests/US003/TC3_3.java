@@ -9,7 +9,7 @@ import utilities.CrossTestBaseRapor;
 import utilities.ReusableMethods;
 import java.util.Random;
 
-public class TC3_2  extends CrossTestBaseRapor {
+public class TC3_3  extends CrossTestBaseRapor {
 
     @Test
     public void TestKayitOlma (){
@@ -24,13 +24,13 @@ public class TC3_2  extends CrossTestBaseRapor {
         // Faker'in urettigini kabul etmedigi icin kendimiz 11 Rakamli tel numarasi uretiyoruz
         Random random = new Random();
         StringBuilder mobile = new StringBuilder();
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 10; i++) {
             mobile.append(random.nextInt(11));
         }
 
         String businessName = faker.company().name();
         String  fullName = faker.name().fullName();
-        String mobileNumber = mobile.toString();
+        String mobileNumber = "123456";
         String password = faker.internet().password();
         String address = faker.address().streetAddress();
 
@@ -78,3 +78,4 @@ public class TC3_2  extends CrossTestBaseRapor {
 
     }
 }
+
