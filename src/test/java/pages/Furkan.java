@@ -6,9 +6,6 @@ import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
 public class Furkan {
-    public static void main(String[] args) {
-        System.out.println("Başlangıç...");
-    }
     public Furkan(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
