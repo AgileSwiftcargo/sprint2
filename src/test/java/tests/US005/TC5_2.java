@@ -4,21 +4,22 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Kerem;
-import utilities.ConfigReader;
-import utilities.Driver;
-import utilities.ReusableMethods;
-import utilities.TestBaseRapor;
+import pages.Locator;
+import utilities.*;
 
+import java.time.Duration;
 import java.util.List;
 
 import static utilities.Driver.driver;
 
-public class TC5_2 extends TestBaseRapor {
+public class TC5_2 extends CrossTestBaseRapor {
 
-    Kerem kerem;
+    Locator locator;
 
     @Test
     public void servisSayfalariTesti (){
@@ -26,32 +27,37 @@ public class TC5_2 extends TestBaseRapor {
         ," Kullanıcı anasayfadan servislerin detay sayfasına erişebilmeli");
 
         // Kullanıcı, https://qa.agileswiftcargo.com/ adresine gider.
-        Driver.getDriver().get(ConfigReader.getProperty("Url"));
+        driver.get(ConfigReader.getProperty("Url"));
         extentTest.info("Kullanici agileswiftcargo ana sayfasina gider");
 
 
-        //4 adet servisin anasayfada listelendiğini test eder
-        kerem = new Kerem();
+        //servis alanının görüntülendiğini test eder
+        locator = new Locator();
+        // listeyi tam görüntülemek için aşağı iner
         WebElement asagiInilecekElement =
-                Driver.getDriver().findElement(By.xpath("//*[.='Why Agile Swift Cargo']"));
+                driver.findElement(By.xpath("//*[.='Why Agile Swift Cargo']"));
 
-        Actions actions = new Actions(Driver.getDriver());
+        Actions actions = new Actions(driver);
         actions.moveToElement(asagiInilecekElement).perform();
 
         WebElement servisAlani =
-                Driver.getDriver().findElement(By.xpath("//div[@class='row py-2 ']"));
+                driver.findElement(By.xpath("//div[@class='row py-2 ']"));
         Assert.assertTrue(servisAlani.isDisplayed());
         extentTest.pass("Servis alani görüntülenir");
 
 
 
+        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        //WebElement eCommerceButton = wait.until(ExpectedConditions.visibilityOf(locator.eCommerceDeliveryButonu));
+        //eCommerceButton.click();
+
 
 
         // E-Commerce delivery servis bağlantısına tıklar ve doğru sayfaya yönlendirilir
-        kerem.eCommerceDeliveryButonu.click();
+        locator.eCommerceDeliveryButonu.click();
         ReusableMethods.bekle(1);
         String expectedBaslik1 = "E-Commerce delivery";
-        String actualBaslik1 = kerem.eCommerceBaslikYazisi.getText();
+        String actualBaslik1 = locator.eCommerceBaslikYazisi.getText();
         Assert.assertEquals(actualBaslik1,expectedBaslik1);
         extentTest.pass("E-Commerce delivery bağlantısına tıklar ve sayfa doğru bir şekilde yüklenmiştir");
 
@@ -62,9 +68,9 @@ public class TC5_2 extends TestBaseRapor {
         //Pick & Drop servis bağlantısına tıklar ve doğru sayfaya yönlendirilir
         actions.sendKeys(Keys.PAGE_DOWN).perform();
         ReusableMethods.bekle(1);
-        kerem.pickDropButonu.click();
+        locator.pickDropButonu.click();
         String expectedBaslik2 = "Pick & Drop";
-        String actualBaslik2 = kerem.pickDropBaslikYazisi.getText();
+        String actualBaslik2 = locator.pickDropBaslikYazisi.getText();
         Assert.assertEquals(actualBaslik2,expectedBaslik2);
         extentTest.pass("Pick & Drop bağlantısına tıklar ve sayfa doğru bir şekilde yüklenmiştir");
 
@@ -72,20 +78,20 @@ public class TC5_2 extends TestBaseRapor {
 
 
         //Packageing servis bağlantısına tıklar ve doğru sayfaya yönlendirilir
-        kerem.packageingButonu.click();
+        locator.packageingButonu.click();
         ReusableMethods.bekle(1);
         String expectedBaslik3 = "Packageing";
-        String actualBaslik3 = kerem.packageingBaslikYazisi.getText();
+        String actualBaslik3 = locator.packageingBaslikYazisi.getText();
         Assert.assertEquals(actualBaslik3,expectedBaslik3);
         extentTest.pass("Packageing bağlantısına tıklar ve sayfa doğru bir şekilde yüklenmiştir");
 
 
 
         //Warehousing servis bağlantısına tıklar ve doğru sayfaya yönlendirilir
-        kerem.warehousingButonu.click();
+        locator.warehousingButonu.click();
         ReusableMethods.bekle(1);
         String expectedBaslik4 = "Warehousing";
-        String actualBaslik4 = kerem.warehousingBaslikYazisi.getText();
+        String actualBaslik4 = locator.warehousingBaslikYazisi.getText();
         Assert.assertEquals(actualBaslik4,expectedBaslik4);
         extentTest.pass("Warehousing bağlantısına tıklar ve sayfa doğru bir şekilde yüklenmiştir");
 

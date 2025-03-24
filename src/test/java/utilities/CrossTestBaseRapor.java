@@ -2,6 +2,7 @@ package utilities;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
@@ -11,6 +12,8 @@ import org.testng.asserts.SoftAssert;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static utilities.TestBaseRapor.extentSparkReporter;
 
 public abstract class CrossTestBaseRapor {
 
@@ -43,7 +46,7 @@ public abstract class CrossTestBaseRapor {
         //oluşturmak istediğimiz raporu (html formatında) başlatıyoruz,
         // filePath ile dosya yolunu belirliyoruz.
         // date class'i ile raporumuza tarih etiketi ekliyoruz
-        extentSparkReporter = new ExtentSparkReporter(filePath);
+        ExtentSparkReporter extentSparkReporter = new ExtentSparkReporter(filePath);
         extentReports.attachReporter(extentSparkReporter);
 
         // İstediğiniz bilgileri buraya ekeyebiliyorsunuz.
