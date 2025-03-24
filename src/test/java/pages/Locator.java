@@ -761,9 +761,29 @@ public class Locator {
     @FindBy(xpath = "(//*[@class='card-title'])[1]")
     public WebElement blogsIlkBlog;
 
-    @FindBy(xpath = "(//*[@class='card-title'])[2]")
-    public WebElement blogsIkinciBlog;
+    @FindBy(xpath = "//*[@id='name']")
+    public WebElement profileUpdateName;
 
+    @FindBy(xpath = "//*[@id='email']")
+    public WebElement profileUpdateEmail;
+
+    @FindBy(xpath = "//*[@id='mobile']")
+    public WebElement profileUpdateMobile;
+
+    @FindBy(xpath = "//*[@id='business_name']")
+    public WebElement profileUpdateBusinessName;
+
+    @FindBy(xpath = "//*[@id='address']")
+    public WebElement profileUpdateAddress;
+
+    @FindBy(xpath = "//*[.='Save Change']")
+    public WebElement profileUpdateSaveChange;
+
+    @FindBy(xpath = "//*[.='The Name field is required.']")
+    public WebElement profileUpdateNameFieldRequired;
+
+    @FindBy(xpath = "//*[.='Success']")
+    public WebElement updateSuccess;
 
 
 
