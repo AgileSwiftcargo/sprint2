@@ -10,7 +10,7 @@ public class TC10_2 extends CrossTestBaseRapor {
 
 
     @Test
-    public void TestBlogsSayfasi (){
+    public void BlogsSayfasi (){
 
         Locator locator = new Locator();
         SoftAssert softAssert = new SoftAssert();

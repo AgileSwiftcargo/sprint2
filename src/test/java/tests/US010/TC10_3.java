@@ -10,7 +10,7 @@ import utilities.CrossTestBaseRapor;
 public class TC10_3 extends CrossTestBaseRapor {
 
     @Test
-    public void TestBlogYazisi (){
+    public void BlogYazisi (){
 
         Locator locator = new Locator();
 

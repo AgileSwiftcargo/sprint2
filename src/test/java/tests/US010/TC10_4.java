@@ -14,7 +14,7 @@ import java.util.Locale;
 public class TC10_4 extends CrossTestBaseRapor {
 
     @Test
-    public void TestBlogSirasi(){
+    public void BlogSirasi(){
 
         Locator locator = new Locator();
 
@@ -53,8 +53,7 @@ public class TC10_4 extends CrossTestBaseRapor {
             System.out.println("Error parsing date-time: " + e.getMessage());
         }
 
-
-
+        extentTest.info("Sayfayi Kapatir");
 
     }
 }
