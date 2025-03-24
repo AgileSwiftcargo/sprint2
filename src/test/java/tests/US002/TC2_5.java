@@ -15,7 +15,7 @@ public class TC2_5 extends CrossTestBaseRapor {
 
 
     @Test
-    public void farkliEkranBoyutuTesti(){
+    public void FarkliEkranBoyutuTesti(){
 
         Locator locator = new Locator();
 

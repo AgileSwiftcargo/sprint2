@@ -12,7 +12,7 @@ import utilities.ReusableMethods;
 public class TC10_1 extends CrossTestBaseRapor {
 
     @Test
-    public void TestNavBlogs() {
+    public void NavBlogs() {
 
         Locator locator = new Locator();
         SoftAssert softAssert = new SoftAssert();
