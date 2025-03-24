@@ -1,17 +1,30 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
+<!--
+        Sunumda Calistirilacak Testler Burda Olacak
+-->
 
 
-<suite name="package suite">
-    <test name="Kerem, istenen package'lari calistirma">
+<suite name="Sunum Testleri">
+
+    <test name="Chrome ile calisacak class'lar">
+        <parameter name="kullanilacakBrowser" value="chrome"></parameter>
         <packages>
             <package name="tests.US005"></package>
             <package name="tests.US013"></package>
             <package name="tests.US021"></package>
-            <package name="tests.US028"></package>
+
         </packages>
+    </test>
 
+    <test name="Firefox ile calisacak class'lar">
+        <parameter name="kullanilacakBrowser" value="firefox"></parameter>
+        <packages>
+            <package name="tests.US005"></package>
+            <package name="tests.US013"></package>
+            <package name="tests.US021"></package>
 
+        </packages>
     </test>
 
 </suite>

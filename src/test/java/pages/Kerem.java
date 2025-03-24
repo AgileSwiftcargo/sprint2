@@ -7,6 +7,8 @@ import utilities.Driver;
 
 import java.nio.file.WatchEvent;
 
+import static utilities.Driver.driver;
+
 public class Kerem {
 
     public Kerem (){
@@ -41,6 +43,10 @@ public class Kerem {
 
     @FindBy ( xpath ="//*[.='  Warehousing '] ")
     public WebElement warehousingBaslikYazisi;
+
+
+    //Download App bölümü Locate'leri
+
 
 
 
