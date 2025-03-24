@@ -16,7 +16,6 @@ public class TC18_2 extends CrossTestBaseRapor {
     public void MerchantProfilEdit() throws IOException {
 
         Locator locator = new Locator();
-        SoftAssert softAssert = new SoftAssert();
 
         extentTest = extentReports.createTest("Merchant Profil Edit Sayfasi Testi",
                 "Merchant, profil bilgilerini güncellemek için Edit düğmesine tıklayabilmeli ve Update Profile sayfasina ulasmali");
@@ -77,6 +76,6 @@ public class TC18_2 extends CrossTestBaseRapor {
         }
         extentTest.info("Sayfayi Kapatir");
 
-        softAssert.assertAll();
+
     }
 }

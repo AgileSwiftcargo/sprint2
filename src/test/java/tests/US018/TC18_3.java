@@ -16,10 +16,9 @@ public class TC18_3 extends CrossTestBaseRapor {
     public void MerchantProfilUpdate() throws IOException {
 
         Locator locator = new Locator();
-        SoftAssert softAssert = new SoftAssert();
 
-        extentTest = extentReports.createTest("Merchant Profil Goruntuleme Testi",
-                "Merchant, profiline tiklayip, mevcut profil bilgilerini goruntuler");
+        extentTest = extentReports.createTest("Merchant Profil Update Testi",
+                "Merchant Profil'ini yeni bilgilerle düzenleyebilmelidir.");
 
         try {
             driver.get(ConfigReader.getProperty("LoginUrl"));
@@ -59,9 +58,52 @@ public class TC18_3 extends CrossTestBaseRapor {
         locator.profilEditButonu.click();
         extentTest.info("Edit Butonuna tiklar");
 
+        locator.profileUpdateName.clear();
+        locator.profileUpdateName.sendKeys("Alpay");
+        extentTest.info("Name Girer");
 
+        locator.profileUpdateEmail.clear();
+        locator.profileUpdateEmail.sendKeys("merchant.alpay@agileswiftcargo.com");
+        extentTest.info("Email Adresi Girer");
 
+        locator.profileUpdateMobile.clear();
+        locator.profileUpdateMobile.sendKeys("8997989956523");
+        extentTest.info("Mobile Girer");
 
+        locator.profileUpdateBusinessName.clear();
+        locator.profileUpdateBusinessName.sendKeys("Merchant Alpay");
+        extentTest.info("Business Name Girer");
+
+        locator.profileUpdateAddress.clear();
+        locator.profileUpdateAddress.sendKeys("Greenwich, London, UK");
+        extentTest.info("Address Girer");
+
+        ReusableMethods.bekle(2);
+
+        locator.profileUpdateSaveChange.click();
+        extentTest.info("Save Change Butonuna Tiklar");
+
+        ReusableMethods.bekle(2);
+        Assert.assertTrue(locator.updateSuccess.isDisplayed());
+        extentTest.pass("Success Mesajini Goruntuler");
+
+        locator.profilResmi.click();
+        extentTest.info("Headerdaki Profil resmine tiklar");
+
+        try {
+            locator.loguotButonu.click();
+            extentTest.info("Logout'a tiklar");
+
+            ReusableMethods.bekle(2);
+            Assert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/");
+            extentTest.pass("Logout Olur");
+        }
+        catch (AssertionError e) {
+            captureFailure("Logout Olamadi");
+            Assert.fail(e.getMessage());
+        }
+
+        extentTest.info("Sayfayi Kapatir");
 
     }
 }
