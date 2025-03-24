@@ -20,13 +20,13 @@ public class TC6_2 extends TestBaseRapor {
                 "Kullanıcılar, bu alanda sunulan bilgilerle ilgili daha fazla detay almak için uygun bağlantılara yönlendirilmelidir.");
 
         // Kullanıcı, https://qa.agileswiftcargo.com/ adresine gider.
-        Driver.getDriver().get(ConfigReader.getProperty("Url"));
+        driver.get(ConfigReader.getProperty("Url"));
         extentTest.info("Kullanici Agile Swift Cargo ana sayfasina gider");
 
         furkan = new Furkan();
 
         // Tüm Why Courier Boxlarını seçer
-        List<WebElement> courierBoxes = Driver.getDriver().findElements(By.cssSelector(".why-courier-col"));
+        List<WebElement> courierBoxes = driver.findElements(By.cssSelector(".why-courier-col"));
 
         for (WebElement box : courierBoxes) {
             // Her bir kutunun içinde <a> etiketi olup olmadığını kontrol eder
