@@ -9,10 +9,10 @@ import utilities.CrossTestBaseRapor;
 import utilities.ReusableMethods;
 import java.util.Random;
 
-public class TC3_2  extends CrossTestBaseRapor {
+public class TC3_4 extends CrossTestBaseRapor {
 
     @Test
-    public void TestKayitOlma (){
+    public void TestKayitOlamama() {
 
         Locator locator = new Locator();
 
@@ -29,7 +29,7 @@ public class TC3_2  extends CrossTestBaseRapor {
         }
 
         String businessName = faker.company().name();
-        String  fullName = faker.name().fullName();
+        String fullName = faker.name().fullName();
         String mobileNumber = mobile.toString();
         String password = faker.internet().password();
         String address = faker.address().streetAddress();
@@ -46,7 +46,7 @@ public class TC3_2  extends CrossTestBaseRapor {
         extentTest.pass("Business Name Girer");
 
         locator.namesurNameButonu.sendKeys(fullName);
-        extentTest.pass("Full Name girer");
+        extentTest.pass(" boş bırakır ");
 
         locator.hubSelect.click();
         locator.hubSelectEntry.sendKeys("New York City");
@@ -77,4 +77,5 @@ public class TC3_2  extends CrossTestBaseRapor {
         ReusableMethods.bekle(2);
 
     }
+
 }
