@@ -52,7 +52,7 @@ public class TC16_2 extends CrossTestBaseRapor {
         // Email adresi yazılacak alanı bul
         WebElement emailTextbox = driver.findElement(By.xpath("//*[@name='email']"));
         // Email adresini yaz
-        emailTextbox.sendKeys("username@ahjhgg.com");
+        emailTextbox.sendKeys("username@hyy.com");
 
         // Kayıt tuşunu bul ve tıkla
         WebElement subscribeButton = driver.findElement(By.xpath("//i[@class='fa fa-paper-plane']"));
@@ -66,6 +66,8 @@ public class TC16_2 extends CrossTestBaseRapor {
         );
 
         Assert.assertEquals(toastrMessage, "Successfully subscribed.", "Abonelik işlemi başarısız.");
+
+
 
         extentTest.info("Sayfayi Kapatir");
     }

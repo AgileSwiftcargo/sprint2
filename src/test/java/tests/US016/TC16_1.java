@@ -11,7 +11,7 @@ import utilities.CrossTestBaseRapor;
 public class TC16_1 extends CrossTestBaseRapor {
 
     @Test
-    public void AnasayfaFooter(){
+    public void SubscribeUs(){
 
         extentTest = extentReports.createTest("Anasayfa Footer Testi",
                 "Footer Kismi  Olmali");
