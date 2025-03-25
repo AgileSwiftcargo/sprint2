@@ -5,14 +5,16 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Furkan;
+import pages.Locator;
 import utilities.ConfigReader;
+import utilities.CrossTestBaseRapor;
 import utilities.Driver;
 import utilities.TestBaseRapor;
 import java.util.List;
 
-public class TC6_2 extends TestBaseRapor {
-    Furkan furkan;
+import static utilities.DriverCross.driver;
 
+public class TC6_2 extends CrossTestBaseRapor {
     @Test
     public void testLinksInCourierBoxes() {
 
@@ -23,7 +25,7 @@ public class TC6_2 extends TestBaseRapor {
         driver.get(ConfigReader.getProperty("Url"));
         extentTest.info("Kullanici Agile Swift Cargo ana sayfasina gider");
 
-        furkan = new Furkan();
+        Locator locator = new Locator();
 
         // Tüm Why Courier Boxlarını seçer
         List<WebElement> courierBoxes = driver.findElements(By.cssSelector(".why-courier-col"));
