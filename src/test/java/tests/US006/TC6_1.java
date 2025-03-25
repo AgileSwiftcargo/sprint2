@@ -1,5 +1,6 @@
 package tests.US006;
 
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Furkan;
@@ -23,6 +24,8 @@ public class TC6_1 extends CrossTestBaseRapor {
         // Ana sayfada "Why Agile Swift Cargo" yazısının bulunduğunu kontrol eder
         String expectedYazi = "Why Agile Swift Cargo";
         Locator locator = new Locator();
+        Actions actions = new Actions(driver);
+        actions.moveToElement(locator.WhyAgileSwiftCargoText).perform();
         String actualYazi = locator.WhyAgileSwiftCargoText.getText();
         Assert.assertEquals(actualYazi,expectedYazi);
         extentTest.pass("Servis alanının doğru bir şekilde görüntülendiğini doğrular");
