@@ -3,13 +3,14 @@ package tests.US001;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utilities.ConfigReader;
+import utilities.CrossTestBaseRapor;
 import utilities.Driver;
 import utilities.TestBaseRapor;
 
 import java.time.Duration;
 import java.time.LocalTime;
 
-public class TC1_2 extends TestBaseRapor {
+public class TC1_2 extends CrossTestBaseRapor {
     @Test
     public void anasayfaGoruntulenmeSureTesti (){
 
@@ -18,7 +19,7 @@ public class TC1_2 extends TestBaseRapor {
 
         LocalTime start = LocalTime.now();
 
-        Driver.getDriver().get(ConfigReader.getProperty("Url"));
+        driver.get(ConfigReader.getProperty("Url"));
 
         LocalTime finish = LocalTime.now();
         int millis = (int) Duration.between(start, finish).toSeconds();

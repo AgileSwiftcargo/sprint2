@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import utilities.ConfigReader;
 import utilities.CrossTestBaseRapor;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 
 public class TC1_1 extends CrossTestBaseRapor {
@@ -16,10 +17,12 @@ public class TC1_1 extends CrossTestBaseRapor {
         extentTest = extentReports.createTest("Anasayfa Görüntülenme Testi",
                 "Anasayfa Görüntülenmeli");
 
-        Driver.getDriver().get(ConfigReader.getProperty("Url"));
+        driver.get(ConfigReader.getProperty("Url"));
         extentTest.info("Kullanıcı anasayfaya gider");
 
-        WebElement anasayfaAgileSwiftCargoLogo = Driver.getDriver().findElement(By.xpath("(//img[@class='logo'])[1]"));
+        ReusableMethods.bekle(1);
+
+        WebElement anasayfaAgileSwiftCargoLogo = driver.findElement(By.xpath("(//img[@class='logo'])[1]"));
         Assert.assertTrue(anasayfaAgileSwiftCargoLogo.isDisplayed());
         extentTest.pass("Anasayfadaki Agile Swift Cargo İkonunun görüntülendiğini doğrular");
 
