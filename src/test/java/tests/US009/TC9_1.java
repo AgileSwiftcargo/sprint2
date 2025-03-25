@@ -29,42 +29,42 @@ public class TC9_1 extends CrossTestBaseRapor {
 
         ReusableMethods.bekle(1);
 
-        WebElement elementAlibaba = Driver.getDriver().findElement(By.xpath("(//*[@Class='partner-logo'])[1]"));
+        WebElement elementAlibaba = driver.findElement(By.xpath("(//*[@Class='partner-logo'])[1]"));
         extentTest.info("Alibaba İkonuna Tıklar ve Alibaba Anasayfasına Gider");
 
         js.executeScript("arguments[0].click();", elementAlibaba);
 
-        for (String windowHandle : Driver.getDriver().getWindowHandles()) {
+        for (String windowHandle : driver.getWindowHandles()) {
             Driver.getDriver().switchTo().window(windowHandle);
         }
 
         String expectedUrl = "www.alibaba.com";
-        String alibabaHandle = Driver.getDriver().getWindowHandle();
-        String actualUrl = Driver.getDriver().getCurrentUrl();
+        String alibabaHandle = driver.getWindowHandle();
+        String actualUrl = driver.getCurrentUrl();
 
         Assert.assertTrue(actualUrl.contains(expectedUrl));
 
         extentTest.pass("Alibaba Sayfasının Görüntülendiğini Doğrular");
 
-        Driver.getDriver().switchTo().window(alibabaHandle).close();
+        driver.switchTo().window(alibabaHandle).close();
         extentTest.info("Alibaba Window'unu Kapatır");
-        Driver.getDriver().switchTo().window(agileSwiftHandle);
+        driver.switchTo().window(agileSwiftHandle);
         extentTest.info("Anasayfaya Window'una Geri Döner");
 
         ReusableMethods.bekle(1);
 
-        WebElement elementAmazon = Driver.getDriver().findElement(By.xpath("(//*[@Class='partner-logo'])[2]"));
+        WebElement elementAmazon = driver.findElement(By.xpath("(//*[@Class='partner-logo'])[2]"));
         extentTest.info("Amazon İkonuna Tıklar ve Amazon Anasayfasına Gider");
-        JavascriptExecutor js1 = (JavascriptExecutor) Driver.getDriver();
+        JavascriptExecutor js1 = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", elementAmazon);
 
-        for (String windowHandle : Driver.getDriver().getWindowHandles()) {
+        for (String windowHandle : driver.getWindowHandles()) {
             Driver.getDriver().switchTo().window(windowHandle);
         }
 
 
         String expecteAmazondUrl = "www.amazon.com";
-        String actualUrlAmazon = Driver.getDriver().getCurrentUrl();
+        String actualUrlAmazon = driver.getCurrentUrl();
 
         Assert.assertTrue(actualUrl.contains(expectedUrl));
         extentTest.pass("Amazon Sayfasının Görüntülendiğini Doğrular");
