@@ -12,19 +12,19 @@ import utilities.ReusableMethods;
 public class TC24_3 extends CrossTestBaseRapor {
 
     @Test
-    public void PickupPointEklemeTestiPozitif() {
+    public void invoiceFaturaIndirmeTesti() {
 
-        extentTest = extentReports.createTest("Pickup Point Ekleme Testi Pozitif",
+        extentTest = extentReports.createTest("Görüntülenen Faturayı Bilgisayara İnfirme Testi",
                 "Login olunabilmeli ve Dasboard Menü Başlıkları Görüntülenebilmeli");
 
-        Driver.getDriver().get(ConfigReader.getProperty("Url"));
+        driver.get(ConfigReader.getProperty("Url"));
         extentTest.info("Kullanıcı Anasayfaya Gider");
 
-        Driver.getDriver().findElement(By.xpath("//*[.='Login']")).click();
+        driver.findElement(By.xpath("//*[.='Login']")).click();
         extentTest.info("Header Menü de Login Linkine Tıklar");
 
-        WebElement emailBox = Driver.getDriver().findElement(By.id("email"));
-        WebElement passwordBox = Driver.getDriver().findElement(By.id("password"));
+        WebElement emailBox = driver.findElement(By.id("email"));
+        WebElement passwordBox = driver.findElement(By.id("password"));
 
         emailBox.sendKeys("cihat.merchant@agileswiftcargo.com");
         extentTest.info("Email Text Box'a Email Girer");
@@ -32,38 +32,37 @@ public class TC24_3 extends CrossTestBaseRapor {
         passwordBox.sendKeys("Agile.0924");
         extentTest.info("Password Text Box'a Password girer");
 
-        Driver.getDriver().findElement(By.xpath("//*[@type='submit']")).click();
+        driver.findElement(By.xpath("//*[@type='submit']")).click();
         extentTest.info("Sıgn In Butonuna Tıklar");
 
-        Driver.getDriver().findElement(By.xpath("(//*[@*='collapse'])[1]")).click();
+        driver.findElement(By.xpath("(//*[@*='collapse'])[1]")).click();
         extentTest.info("Menü'den Accounts'a Tıklar");
 
-        Driver.getDriver().findElement(By.xpath("(//*[.='Invoice'])[3]")).click();
+        driver.findElement(By.xpath("(//*[.='Invoice'])[3]")).click();
         extentTest.info("Açılan Menü'de Invoice'a Tıklar");
 
 
-        Driver.getDriver().findElement(By.xpath("//*[.=' View']")).click();
+        driver.findElement(By.xpath("//*[.=' View']")).click();
         extentTest.info("View Butonuna  Tıklar");
 
         String expectedUrl = "https://qa.agileswiftcargo.com/merchant/invoice/AS-4904";
-        String actualUrl = Driver.getDriver().getCurrentUrl();
+        String actualUrl = driver.getCurrentUrl();
 
         Assert.assertEquals(actualUrl,expectedUrl);
         extentTest.pass("AS-4904 fatura Fayfasının Görüntülendiğini Doğrular");
 
-        Driver.getDriver().findElement(By.xpath("//*[.=' CSV']")).click();
-        extentTest.info("CSV Butonuna  Tıklar");
+        driver.findElement(By.xpath("//*[.=' CSV']")).click();
+        extentTest.info("CSV Butonuna  Tıklar, indirme işlemini başlatır");
 
         ReusableMethods.bekle(2);
 
 
-        Driver.getDriver().findElement(By.xpath(("(//*[@class='nav-link nav-user-img'])[1]"))).click();;
+        driver.findElement(By.xpath(("(//*[@class='nav-link nav-user-img'])[1]"))).click();;
         extentTest.info("Profil resmine tıklar");
 
-        Driver.getDriver().findElement(By.xpath("(//*[contains(@href, 'logout')])[1]")).click();
+        driver.findElement(By.xpath("(//*[contains(@href, 'logout')])[1]")).click();
         extentTest.info("LogOut Butonuna Tıklar");
 
-        ReusableMethods.bekle(2);
 
         extentTest.info("Sayfayı Kapatır");
     }

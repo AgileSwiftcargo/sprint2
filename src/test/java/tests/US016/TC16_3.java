@@ -11,9 +11,9 @@ import utilities.CrossTestBaseRapor;
 public class TC16_3 extends CrossTestBaseRapor {
 
     @Test
-    public void subscribeUsKayitNegatif(){
+    public void subscribeUsGecersizEmeilKayitNegatif(){
 
-        extentTest = extentReports.createTest("Anasayfa Footer Testi",
+        extentTest = extentReports.createTest("Subscribe Us Abonelik  Testi",
                 "Footer Kismi  Olmali");
 
         driver.get(ConfigReader.getProperty("Url"));
@@ -44,7 +44,7 @@ public class TC16_3 extends CrossTestBaseRapor {
         extentTest.pass("Footer kisminin oldugunu dogrular");
 
         driver.findElement(By.xpath(("//*[.='Subscribe Us']"))).isDisplayed();
-        extentTest.pass("Subsribe  gorundugunu dogrular");
+        extentTest.pass("Subsribe alanının  göründüğünü dogrular");
 
         // Email adresi yazılacak alanı bul
         WebElement emailTextbox = driver.findElement(By.xpath("//*[@name='email']"));
@@ -54,6 +54,7 @@ public class TC16_3 extends CrossTestBaseRapor {
         // Kayıt tuşunu bul ve tıkla
         WebElement subscribeButton = driver.findElement(By.xpath("//i[@class='fa fa-paper-plane']"));
         subscribeButton.click();
+        extentTest.pass("Subsribe  butonuna tıklandığını  dogrular");
 
 
         // Abonelik işleminin başarılı olduğunu doğrulamak için JavaScript kullanarak toastr mesajını kontrol et
@@ -61,8 +62,9 @@ public class TC16_3 extends CrossTestBaseRapor {
         String toastrMessage = (String) js.executeScript(
                 "return (document.querySelector('.toast-message') ? document.querySelector('.toast-message').textContent : '');"
         );
+        extentTest.pass("Subsribe  Olunamadığını dogrular");
 
-        Assert.assertEquals(toastrMessage, "Something went wrong.", "Abonelik işlemi başarısız.");
+        Assert.assertEquals(toastrMessage, "Something went wrong.", "Something went wrong.");
         System.out.println("Geçersiz email girişi ,abonelik işlemi başarısız");
 
         extentTest.info("Sayfayi Kapatir");
