@@ -17,11 +17,11 @@ public class TC16_4 extends CrossTestBaseRapor {
 
 
     @Test
-    public void subscribeUsKayitNegatif(){
+    public void subscribeUsKayitliEmailleNegatifTest(){
         //***daha önce kayıt yapılmış email ile kayıt yapılamayacaktır.
 
         driver.get("https://qa.agileswiftcargo.com");
-        extentTest = extentReports.createTest("Anasayfa Footer Testi", "Footer Kismi  Olmali");
+        extentTest = extentReports.createTest("Subscribe Us Abonelik  Testi", "Footer Kismi  Olmali");
 
         driver.get(ConfigReader.getProperty("Url"));
         Assert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/");
@@ -31,6 +31,7 @@ public class TC16_4 extends CrossTestBaseRapor {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         WebElement footer = driver.findElement(By.xpath("/html/body/footer[1]"));
         js.executeScript("arguments[0].scrollIntoView(true);", footer);
+        extentTest.pass("Anasayfa aşağı doğru kaydırılır");
 
         // Bekleme süresi
         try {
@@ -51,7 +52,7 @@ public class TC16_4 extends CrossTestBaseRapor {
         extentTest.pass("Footer kisminin oldugunu dogrular");
 
         driver.findElement(By.xpath(("//*[.='Subscribe Us']"))).isDisplayed();
-        extentTest.pass("Subsribe  gorundugunu dogrular");
+        extentTest.pass("Subsribe  alanının gorundugunu dogrular");
 
         // Email adresi yazılacak alanı bul
         WebElement emailTextbox = driver.findElement(By.xpath("//*[@name='email']"));
@@ -63,9 +64,7 @@ public class TC16_4 extends CrossTestBaseRapor {
         // Kayıt tuşunu bul ve tıkla
         WebElement subscribeButton = driver.findElement(By.xpath("//i[@class='fa fa-paper-plane']"));
         subscribeButton.click();
-
-        String email = "test@example.com";
-
+        extentTest.pass("Subsribe  kayıt butonuna tıklandığını dogrular");
 
 
         // Abonelik işleminin başarılı olduğunu doğrulamak için JavaScript kullanarak toastr mesajını kontrol et
@@ -74,8 +73,9 @@ public class TC16_4 extends CrossTestBaseRapor {
                 "return (document.querySelector('.toast-message') ? document.querySelector('.toast-message').textContent : '');"
         );
 
-        Assert.assertEquals(toastrMessage, "Already Subscribed", "Kayıtlı email adresi girdiniz.");
+        Assert.assertEquals(toastrMessage, "Already Subscribed", "Already Subscribed");
         System.out.println("Kayıtlı email girişi ,abonelik işlemi başarısız");
+        extentTest.pass("Kayıtlı email adresiyle kayıt yapamayacağını dogrular");
 
         // Bekleme süresi
         try {
