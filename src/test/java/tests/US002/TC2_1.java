@@ -8,7 +8,6 @@ import pages.Locator;
 import utilities.ConfigReader;
 import utilities.CrossTestBaseRapor;
 import utilities.ReusableMethods;
-
 import java.util.List;
 
 public class TC2_1 extends CrossTestBaseRapor {
@@ -29,7 +28,6 @@ public class TC2_1 extends CrossTestBaseRapor {
     extentTest.pass("Header kisminin oldugunu dogrular");
 
     List<WebElement> navLinks = driver.findElements(By.xpath("//*[contains(@class, 'nav-link')]"));
-        System.out.println(navLinks.size());
 
         // Butun nav-link elementlerinin goruntulendigini kontrol eder
         for (int i = 0; i < 8; i++) {
@@ -39,6 +37,7 @@ public class TC2_1 extends CrossTestBaseRapor {
 
     ReusableMethods.bekle(1);
     extentTest.info("Sayfayi Kapatir");
+
 
 }
 }
