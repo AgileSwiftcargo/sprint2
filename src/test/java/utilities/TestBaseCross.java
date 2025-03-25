@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
-public class TestBaseCross {
+public class TestBaseCross extends CrossTestBaseRapor{
     // Crossbrowser calisacak class'lar icin
     // .xml'den gonderilen calisacakBrowser parametresini yakalayip
     // o browser'a uygun bir driver olusturup
