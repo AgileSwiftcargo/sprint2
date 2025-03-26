@@ -1,5 +1,9 @@
 package tests.US015;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.Busra;
@@ -22,6 +26,8 @@ public class TC15_3 extends CrossTestBaseRapor {
 
         driver.get(ConfigReader.getProperty("Url"));
         extentTest.info("Anasayfaya gider");
+
+     locator.FAQButonu.click();
 
 
 
