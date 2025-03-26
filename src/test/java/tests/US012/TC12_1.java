@@ -1,9 +1,45 @@
 package tests.US012;
 
-public class TC12_1 {
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import pages.Locator;
+import utilities.ConfigReader;
+import utilities.CrossTestBaseRapor;
 
-    //1_https://qa.agileswiftcargo.com/ adresine gider.
+import java.util.List;
+
+public class TC12_1 extends CrossTestBaseRapor {
+
+    @Test
+    public void contactMenuKontrol(){
+
+        Locator locator = new Locator();
+
+        extentTest = extentReports.createTest("Anasayfa Header Testi",
+                "Header Kismi ve Navigasyon Bari Olmali");
+
+        //1_https://qa.agileswiftcargo.com/ adresine gider.
+        driver.get(ConfigReader.getProperty("Url"));
+
     //2_Sayfanın header kısmında "Contact" menü başlığı olduğunu doğrular.
+
+        String expectedName = "Contact";
+        String actualName = locator.navContact.getText();
+        Assert.assertEquals(actualName,expectedName);
+
+        // Header kısmında Contact bölümünün olduğunu doğrulama
+
+        String expectedButton = "Contact";
+
+        List<WebElement> buttons = driver.findElements(By.xpath("//ul[@class='navbar-nav']"));
+        for (int i= 0; i< buttons.size(); i++){
+            Assert.assertTrue(buttons.get(i).getText().contains(expectedButton));
+        }
+
     //3_Sayfayı kapatır.
 
+
+    }
 }

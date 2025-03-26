@@ -276,7 +276,7 @@ public class Locator {
 
     //Login Password
     @FindBy(xpath = "//*[@placeholder='Password']")
-    public WebElement passwordTextbox;
+        public WebElement passwordTextbox;
 
     //Login Sign in Buttonu
     @FindBy(xpath = "//button[.='Sign in']")
