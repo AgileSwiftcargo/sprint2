@@ -29,7 +29,7 @@ public class TC3_4 extends CrossTestBaseRapor {
         }
 
         String businessName = faker.company().name();
-        String fullName = faker.name().fullName();
+
         String mobileNumber = mobile.toString();
         String password = faker.internet().password();
         String address = faker.address().streetAddress();
@@ -45,7 +45,7 @@ public class TC3_4 extends CrossTestBaseRapor {
         locator.registerbusNamebutonu.sendKeys(businessName);
         extentTest.pass("Business Name Girer");
 
-        locator.namesurNameButonu.sendKeys(fullName);
+        locator.namesurNameButonu.sendKeys();
         extentTest.pass(" boş bırakır ");
 
         locator.hubSelect.click();

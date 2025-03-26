@@ -16,7 +16,7 @@ public class TC16_2 extends CrossTestBaseRapor {
 
         //*************kayıt için kullanılan email adersi her test çalıştırıldığında değiştirilmelidir.******************
 
-        extentTest = extentReports.createTest("Anasayfa Footer Testi",
+        extentTest = extentReports.createTest("Subscrib Us Kayıt testi",
                 "Footer Kismi  Olmali");
 
         driver.get(ConfigReader.getProperty("Url"));
@@ -52,7 +52,7 @@ public class TC16_2 extends CrossTestBaseRapor {
         // Email adresi yazılacak alanı bul
         WebElement emailTextbox = driver.findElement(By.xpath("//*[@name='email']"));
         // Email adresini yaz
-        emailTextbox.sendKeys("username@hyy.com");
+        emailTextbox.sendKeys("username@hghj.com");
 
         // Kayıt tuşunu bul ve tıkla
         WebElement subscribeButton = driver.findElement(By.xpath("//i[@class='fa fa-paper-plane']"));

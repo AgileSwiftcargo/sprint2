@@ -1,4 +1,4 @@
-package tests.US018;
+package tests.US019;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,30 +10,29 @@ import utilities.ReusableMethods;
 
 import java.io.IOException;
 
-public class TC18_2 extends CrossTestBaseRapor {
+public class TC19_2 extends CrossTestBaseRapor {
 
     @Test
-    public void MerchantProfilEdit() throws IOException {
+    public void MerchantProfilUpdate() throws IOException {
 
         Locator locator = new Locator();
 
-        extentTest = extentReports.createTest("Merchant Profil Edit Sayfasi Testi",
-                "Merchant, profil bilgilerini güncellemek için Edit düğmesine tıklayabilmeli ve Update Profile sayfasina ulasmali");
+        extentTest = extentReports.createTest("Merchant Profil Update Testi",
+                "Merchant Profil'ini yeni bilgilerle düzenleyebilmelidir.");
 
         try {
             driver.get(ConfigReader.getProperty("LoginUrl"));
             Assert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/login");
             extentTest.pass("Kullanici Login Sayfasina gider");
-        }
-        catch (AssertionError e) {
+        } catch (AssertionError e) {
             captureFailure("Login Sayfasina Ulasilamiyor");
             Assert.fail(e.getMessage());
         }
 
-        locator.emailInput.sendKeys(ConfigReader.getProperty("MerchantAlpayGecerliMail"));
+        locator.emailInput.sendKeys("merchant.filiz@agileswiftcargo.com");
         extentTest.info("Email yada tel no kismina gecerli emailini girer");
 
-        locator.passwordInput.sendKeys(ConfigReader.getProperty("MerchantAlpayGecerliPassword"));
+        locator.passwordInput.sendKeys("Agile.0924");
         extentTest.info("Password kismina gecerli passwordunu girer");
 
         try {
@@ -43,39 +42,38 @@ public class TC18_2 extends CrossTestBaseRapor {
 
             Assert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/dashboard");
             extentTest.pass("Kullanici Merchant Dashboard Sayfasina ulasir");
-        }
-        catch (AssertionError e) {
+        } catch (AssertionError e) {
             captureFailure("Merchant Dashboard Sayfasina Ulasilamiyor");
             Assert.fail(e.getMessage());
         }
-
+        ReusableMethods.bekle(2);
         locator.profilResmi.click();
         extentTest.info("Headerdaki Profil resmine tiklar");
-
+        ReusableMethods.bekle(3);
         locator.profilButonu.click();
         extentTest.info("Profil secenegine tiklar");
-
-        locator.profilEditButonu.click();
-        extentTest.info("Edit Butonuna tiklar");
-
-        ReusableMethods.bekle(1);
+        ReusableMethods.bekle(4);
         locator.profilResmi.click();
         extentTest.info("Headerdaki Profil resmine tiklar");
+        ReusableMethods.bekle(3);
 
-        try {
-            locator.loguotButonu.click();
-            extentTest.info("Logout'a tiklar");
+        locator.sifeDegistirButonu.click();
+        extentTest.info("sifre degistir e tıklar");
+        ReusableMethods.bekle(2);
+        locator.passwordInput.sendKeys("filiz.0924");
+        extentTest.info("yeni şifre girilir");
+        ReusableMethods.bekle(2);
 
-            ReusableMethods.bekle(1);
-            Assert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/");
-            extentTest.pass("Logout Olur");
-        }
-        catch (AssertionError e) {
-            captureFailure("Logout Olamadi");
-            Assert.fail(e.getMessage());
-        }
-        extentTest.info("Sayfayi Kapatir");
+        locator.passwordInput.sendKeys("filiz.0924");
+        extentTest.info("yeni şifre tekrar girilir");
+        ReusableMethods.bekle(2);
+        locator.saveChangeButton.click();
+        extentTest.info("sifre kaydet e tıklar");
+        ReusableMethods.bekle(2);
+        extentTest.info("sayfayı kapatır");
+
 
 
     }
 }
+

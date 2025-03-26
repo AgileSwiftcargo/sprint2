@@ -11,9 +11,9 @@ import utilities.CrossTestBaseRapor;
 public class TC16_1 extends CrossTestBaseRapor {
 
     @Test
-    public void SubscribeUs(){
+    public void SubscribeUsAlaniGoruntulemeTesti(){
 
-        extentTest = extentReports.createTest("Anasayfa Footer Testi",
+        extentTest = extentReports.createTest("SubscribeUs Alanı Görüntüleme Testi",
                 "Footer Kismi  Olmali");
 
         driver.get(ConfigReader.getProperty("Url"));
@@ -44,7 +44,7 @@ public class TC16_1 extends CrossTestBaseRapor {
         extentTest.pass("Footer kisminin oldugunu dogrular");
 
         driver.findElement(By.xpath(("//*[.='Subscribe Us']"))).isDisplayed();
-        extentTest.pass("Subsribe  gorundugunu dogrular");
+        extentTest.pass("Subsribe alanının  gorundugunu dogrular");
 
         extentTest.info("Sayfayi Kapatir");
 

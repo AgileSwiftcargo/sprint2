@@ -11,6 +11,9 @@
         <parameter name="kullanilacakBrowser" value="chrome"></parameter>
         <packages>
             <package name="tests.US002"></package>
+            <package name="tests.US010"></package>
+            <package name="tests.US018"></package>
+            <package name="tests.US025"></package>
 
         </packages>
     </test>
@@ -19,6 +22,10 @@
         <parameter name="kullanilacakBrowser" value="edge"></parameter>
         <packages>
             <package name="tests.US002"></package>
+            <package name="tests.US010"></package>
+            <package name="tests.US018"></package>
+            <package name="tests.US025"></package>
+
 
         </packages>
     </test>

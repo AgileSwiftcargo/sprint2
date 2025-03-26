@@ -276,7 +276,7 @@ public class Locator {
 
     //Login Password
     @FindBy(xpath = "//*[@placeholder='Password']")
-    public WebElement passwordTextbox;
+        public WebElement passwordTextbox;
 
     //Login Sign in Buttonu
     @FindBy(xpath = "//button[.='Sign in']")
@@ -306,7 +306,7 @@ public class Locator {
 
     // Parcel Menu Basligi
     @FindBy(xpath = "(//*[.='Parcels'])[3]")
-    public WebElement parcelmenusu;
+    public WebElement parcelMenusu;
 
     // Parcel Ekleme Butonu
     @FindBy(xpath = "//*[.=' Add']")
@@ -319,6 +319,130 @@ public class Locator {
     // Parcel Ekleme Formu Success Mesaji
     @FindBy(xpath = "//*[.='Success']")
     public WebElement parcelSuccess;
+
+    //Parcel Tracking ID Basligi
+    @FindBy(xpath = "//th[.='Tracking ID']")
+    public WebElement parcelTrackindIdBasligi;
+
+    //Parcel Recipient Info Basligi
+    @FindBy(xpath = "//th[.='Recipient Info']")
+    public WebElement parcelRecipientInfoBasligi;
+
+    //Parcel Amount Basligi
+    @FindBy(xpath = "//th[.='Amount']")
+    public WebElement parcelAmountBasligi;
+
+    //Parcel Status Basligi
+    @FindBy(xpath = "//th[.='Status']")
+    public WebElement parcelStatusBasligi;
+
+    //Parcel Payment Basligi
+    @FindBy(xpath = "//th[.='Payment']")
+    public WebElement parcelPaymentBasligi;
+
+    //Create Parcel Pickup Points Dropdown
+    @FindBy(xpath = "//*[@id='select2-shopID-container']")
+    public WebElement createParcelDropdown;
+
+    //Create Parcel Pickup Points TextBox
+    @FindBy(xpath = "//*[@class='select2-search__field']")
+    public WebElement createParcelTextBox;
+
+    //Create Parcel Pickup Address
+    @FindBy(xpath = "//*[@id='pickup_address']")
+    public WebElement createParcelPickupAddress;
+
+    //Create Parcel Selling Price
+    @FindBy(xpath = "//*[@id='selling_price']")
+    public WebElement createParcelSellingPrice;
+
+    //Create Parcel Category Dropdown
+    @FindBy(xpath = "//*[@id='select2-category_id-container']")
+    public WebElement createParcelCategoryDropdown;
+
+    //Create Parcel Category TextBox
+    @FindBy(xpath = "//*[.='KG']")
+    public WebElement createParcelCategoryTextBox;
+
+    //Create Parcel Delivery Type Dropdown
+    @FindBy(xpath = "//*[@id='select2-delivery_type_id-container']")
+    public WebElement createParcelDeliveryDropdown;
+
+    //Create Parcel Delivery Type TextBox
+    @FindBy(xpath = "//*[contains(text(), 'Same Day')]")
+    public WebElement createParcelDeliveryTextBox;
+
+    //Create Parcel Customer Phone
+    @FindBy(xpath = "//*[@id='phone']")
+    public WebElement createParcelCustomerPhone;
+
+    //Create Parcel Customer Address
+    @FindBy(xpath = "//*[@id='customer_address']")
+    public WebElement createParcelCustomerAddress;
+
+    //Create Parcel Pickup Phone
+    @FindBy(xpath = "//*[@id='pickup_phone']")
+    public WebElement createParcelPickupPhone;
+
+    //Create Parcel Cash Collection
+    @FindBy(xpath = "//*[@id='cash_collection']")
+    public WebElement createParcelCashCollection;
+
+    //Create Parcel Weight Dropdown
+    @FindBy(xpath = "//*[@id='select2-weightID-container']")
+    public WebElement createParcelWeightDropdown;
+
+    //Create Parcel Weight TextBox
+    @FindBy(xpath = "//*[contains(text(), '2 KG')]")
+    public WebElement createParcelWeightTextBox;
+
+    //Create Parcel Customer Name
+    @FindBy(xpath = "//*[@id='customer_name']")
+    public WebElement createParcelCustomerName;
+
+    //Create Parcel Liquid/Fragile
+    @FindBy(xpath = "//*[@for='fragileLiquid']")
+    public WebElement createParcelLiquid;
+
+    //Create Parcel Is it Parcel Bank ?
+    @FindBy(xpath = "(//*[@class='custom-control-label'])[2]")
+    public WebElement createParcelParcelBank;
+
+    //Create Parcel Save Button
+    @FindBy(xpath = "//*[.='Save']")
+    public WebElement createParcelSaveButton;
+
+    //Create Parcel Succces Mesaji
+    @FindBy(xpath = "//*[.='Success']")
+    public WebElement createParcelSuccessMesaji;
+
+    //Parcel List Recipient Name
+    @FindBy(xpath = "//*[@id=\"table\"]/tbody/tr[1]/td[4]/div/div[1]/p")
+    public WebElement parcelListRecipientName;
+
+    //Parcel List Actions Basligi
+    @FindBy(xpath = "//*[.=\"###\"]")
+    public WebElement parcelListActionsBasligi;
+
+    //Parcel List Actions Butonu
+    @FindBy(xpath = "(//*[@class='btn btn-sm ml-2 bnone'])[1]")
+    public WebElement parcelListActionsButonu;
+
+    //Parcel List Edit Butonu
+    @FindBy(xpath = "(//*[.=' Edit'])[1]")
+    public WebElement parcelListEditButonu;
+
+    //Parcel List Save Change Butonu
+    @FindBy(xpath = "//*[.='Save Change']")
+    public WebElement parcelListSaveChangeButonu;
+
+    //Parcel List Delete Butonu
+    @FindBy(xpath = "(//*[.=' Delete'])[1]")
+    public WebElement parcelListDeleteButonu;
+
+    //Parcel Delete Yes Butonu
+    @FindBy(xpath = "//*[.='Yes']")
+    public WebElement parcelDeleteYesButonu;
 
 
     //Merchant Dashboard Sol Menü //------------------------
@@ -599,7 +723,7 @@ public class Locator {
     public WebElement selectHubBasligi;
 
     //şifre değiştir butonu//
-    @FindBy(xpath = "(//*[contains(@class,'dropdown-item')])[39]")
+    @FindBy(xpath = "(//i[@class='fas fa-key mr-2'])[1]")
     public WebElement sifeDegistirButonu;
 
     //eski şifre butonu//
