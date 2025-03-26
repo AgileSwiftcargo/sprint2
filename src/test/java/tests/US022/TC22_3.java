@@ -10,14 +10,14 @@ import utilities.CrossTestBaseRapor;
 
 import java.util.List;
 
-public class TC22_2 extends CrossTestBaseRapor {
+public class TC22_3 extends CrossTestBaseRapor {
 
     Locator locator;
 
     @Test
     public void gelirButonlarinaErisimTesti (){
         extentTest = extentReports.createTest("Merchant Gelir Verileri Sayfasina Erisim Testi",
-                "Merchant, menüde gelir bağlantılarını görüntülemeli");
+                "Merchant, menüde gelir bağlantılarını görüntülemeli ve tıklandığında doğru bağlantı açılmalı");
 
         // Kullanıcı, https://qa.agileswiftcargo.com/ adresine gider.
         driver.get(ConfigReader.getProperty("Url"));
@@ -45,11 +45,17 @@ public class TC22_2 extends CrossTestBaseRapor {
         //extentTest.pass("Menüde gelir verileri bağlantısı görüntülenir");
         locator.reportsMenuInput.click();
 
-        List<WebElement> navLinks = driver.findElements(By.xpath("//*[@id='reports']/ul/li"));
+        List<WebElement> navLinks = driver.findElements(By.xpath("//*[@id='reports']//li"));
 
         for (WebElement button : navLinks) {
+            locator.reportsMenuInput.click();
             WebElement aTag = button.findElement(By.tagName("a"));
-            extentTest.info(aTag.getDomProperty("textContent")+" göründü.");
+            String currentUrl = driver.getCurrentUrl();
+            aTag.click();
+            String newUrl = driver.getCurrentUrl();
+            //Assert.assertEquals(currentUrl,newUrl);
+            extentTest.info(" göründü ve tıklandı. Yeni link: "+newUrl);
+            driver.navigate().back();
         }
 
 

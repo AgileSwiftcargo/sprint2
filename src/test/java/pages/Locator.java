@@ -80,23 +80,23 @@ public class Locator {
     public WebElement AvailableServicesBaşlığı;
 
     //Anasayfa/Footer FAQ butonu
-    @FindBy(xpath = "(//*[contains(@class,'list-ite')])[5]")
+    @FindBy(xpath = "//a[.='FAQ ']")
     public WebElement FAQButonu;
 
     //Anasayfa/Footer About Us butonu
-    @FindBy(xpath = "(//*[contains(@class,'list-ite')])[6]")
+    @FindBy(xpath = "//a[.='About Us']")
     public WebElement AboutUsButonu;
 
     //Anasayfa/Footer Contact us butonu
-    @FindBy(xpath = "(//*[contains(@class,'list-ite')])[7]")
+    @FindBy(xpath = "//a[.='Contact us']")
     public WebElement ContactUsButonu;
 
     //Anasayfa/Footer Privacy And Policy butonu
-    @FindBy(xpath = "(//*[contains(@class,'list-ite')])[8]")
+    @FindBy(xpath = "//a[.='Privacy And Policy']")
     public WebElement PrivacyAndPolicyButonu;
 
     //Anasayfa/Footer Terms of Use butonu
-    @FindBy(xpath = "(//*[contains(@class,'list-ite')])[9]")
+    @FindBy(xpath = "//a[.='Terms of Use']")
     public WebElement TermsOfUseButonu;
 
     //Anasayfa/Footer Warehousin butonu
@@ -723,7 +723,7 @@ public class Locator {
     public WebElement selectHubBasligi;
 
     //şifre değiştir butonu//
-    @FindBy(xpath = "(//*[contains(@class,'dropdown-item')])[39]")
+    @FindBy(xpath = "(//i[@class='fas fa-key mr-2'])[1]")
     public WebElement sifeDegistirButonu;
 
     //eski şifre butonu//
@@ -908,6 +908,46 @@ public class Locator {
 
     @FindBy(xpath = "//*[.='Success']")
     public WebElement updateSuccess;
+
+    // Merchant Ticket Sayfası //-----------------------------
+    @FindBy(xpath = "//*[@aria-label='Ticket Add']")
+    public WebElement ticketAddButonu;
+
+    @FindBy(xpath = "//*[.='Ticket Add']")
+    public WebElement ticketAddYaziElementi;
+
+    @FindBy (xpath = "//*[@name='priority']")
+    public WebElement priorityDdmElementi;
+
+    @FindBy( xpath = "//*[@name='date']")
+    public WebElement ticketAddDateBox;
+
+    @FindBy(id = "subject")
+    public WebElement ticketAddSubjectBox;
+
+    @FindBy (id = "attached_file")
+    public WebElement attachedBoxDosyaSecButonu;
+
+    @FindBy (xpath = "//*[@role='textbox']")
+    public WebElement descriptionBox;
+
+    @FindBy (xpath = "//*[.='Save']")
+    public WebElement ticketAddSaveButonu;
+
+    @FindBy(xpath = "//*[.='The service field is required.']")
+    public WebElement ticketAddServiceKayitUyariYazisi;
+
+    @FindBy ( xpath = "//*[@name='department_id']")
+    public WebElement departmentDdmElementi;
+
+    @FindBy( xpath = "//*[@name='service']")
+    public WebElement serviceDdmElementi;
+
+
+
+
+
+
 
 
 
