@@ -9,25 +9,27 @@
 
     <test name="Chrome ile calisacak class'lar">
         <parameter name="kullanilacakBrowser" value="chrome"></parameter>
-        <packages>
-            <package name="tests.US002"></package>
-            <package name="tests.US010"></package>
-            <package name="tests.US018"></package>
-            <package name="tests.US025"></package>
+        <classes>
 
-        </packages>
+            <class name="tests.US025.TC25_1"></class>
+            <class name="tests.US018.TC18_3"></class>
+            <class name="tests.US025.TC25_2"></class>
+            <class name="tests.US002.TC2_4"></class>
+            <class name="tests.US010.TC10_1"></class>
+            <class name="tests.US018.TC18_5"></class>
+
+        </classes>
     </test>
 
     <test name="Edge ile calisacak class'lar">
         <parameter name="kullanilacakBrowser" value="edge"></parameter>
-        <packages>
-            <package name="tests.US002"></package>
-            <package name="tests.US010"></package>
-            <package name="tests.US018"></package>
-            <package name="tests.US025"></package>
+        <classes>
 
+            <class name="tests.US002.TC2_1"></class>
 
-        </packages>
+            <class name="tests.US010.TC10_5"></class>
+
+        </classes>
     </test>
 
 </suite>

@@ -80,23 +80,23 @@ public class Locator {
     public WebElement AvailableServicesBaşlığı;
 
     //Anasayfa/Footer FAQ butonu
-    @FindBy(xpath = "(//*[contains(@class,'list-ite')])[5]")
+    @FindBy(xpath = "//a[.='FAQ ']")
     public WebElement FAQButonu;
 
     //Anasayfa/Footer About Us butonu
-    @FindBy(xpath = "(//*[contains(@class,'list-ite')])[6]")
+    @FindBy(xpath = "//a[.='About Us']")
     public WebElement AboutUsButonu;
 
     //Anasayfa/Footer Contact us butonu
-    @FindBy(xpath = "(//*[contains(@class,'list-ite')])[7]")
+    @FindBy(xpath = "//a[.='Contact us']")
     public WebElement ContactUsButonu;
 
     //Anasayfa/Footer Privacy And Policy butonu
-    @FindBy(xpath = "(//*[contains(@class,'list-ite')])[8]")
+    @FindBy(xpath = "//a[.='Privacy And Policy']")
     public WebElement PrivacyAndPolicyButonu;
 
     //Anasayfa/Footer Terms of Use butonu
-    @FindBy(xpath = "(//*[contains(@class,'list-ite')])[9]")
+    @FindBy(xpath = "//a[.='Terms of Use']")
     public WebElement TermsOfUseButonu;
 
     //Anasayfa/Footer Warehousin butonu
