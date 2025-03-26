@@ -785,6 +785,46 @@ public class Locator {
     @FindBy(xpath = "//*[.='Success']")
     public WebElement updateSuccess;
 
+    // Merchant Ticket Sayfası //-----------------------------
+    @FindBy(xpath = "//*[@aria-label='Ticket Add']")
+    public WebElement ticketAddButonu;
+
+    @FindBy(xpath = "//*[.='Ticket Add']")
+    public WebElement ticketAddYaziElementi;
+
+    @FindBy (xpath = "//*[@name='priority']")
+    public WebElement priorityDdmElementi;
+
+    @FindBy( xpath = "//*[@name='date']")
+    public WebElement ticketAddDateBox;
+
+    @FindBy(id = "subject")
+    public WebElement ticketAddSubjectBox;
+
+    @FindBy (id = "attached_file")
+    public WebElement attachedBoxDosyaSecButonu;
+
+    @FindBy (xpath = "//*[@role='textbox']")
+    public WebElement descriptionBox;
+
+    @FindBy (xpath = "//*[.='Save']")
+    public WebElement ticketAddSaveButonu;
+
+    @FindBy(xpath = "//*[.='The service field is required.']")
+    public WebElement ticketAddServiceKayitUyariYazisi;
+
+    @FindBy ( xpath = "//*[@name='department_id']")
+    public WebElement departmentDdmElementi;
+
+    @FindBy( xpath = "//*[@name='service']")
+    public WebElement serviceDdmElementi;
+
+
+
+
+
+
+
 
 
 
