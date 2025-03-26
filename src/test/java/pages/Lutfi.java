@@ -92,6 +92,9 @@ public class Lutfi {
     @FindBy(xpath = "//input[@placeholder='Enter Image']")
     public WebElement adminProfileFileButton;
 
+    //contact us sayfası contact us yazısı
+    @FindBy(xpath = "//h3[.='  Contact Us ']")
+    public WebElement contactUsYazisi;
 
 }
 

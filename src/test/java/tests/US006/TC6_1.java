@@ -1,39 +1,36 @@
 package tests.US006;
 
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Furkan;
+import pages.Locator;
 import utilities.ConfigReader;
-import utilities.Driver;
-import utilities.TestBaseRapor;
+import utilities.CrossTestBaseRapor;
+import utilities.ReusableMethods;
 
-public class TC6_1 extends TestBaseRapor {
-    Furkan furkan ;
+import java.util.Scanner;
+
+public class TC6_1 extends CrossTestBaseRapor {
 
     @Test
     public void servisYazisiKontrolTesti (){
 
         extentTest = extentReports.createTest("Neden Agile Swift Cargo Yazısı Kontrol Testi" +
                 "Kullanici ana sayfada neden agile swift cargo alanını görüntülemeli");
-
         // Kullanıcı, https://qa.agileswiftcargo.com/ adresine gider.
-        Driver.getDriver().get(ConfigReader.getProperty("Url"));
+        driver.get(ConfigReader.getProperty("Url"));
         extentTest.info("Kullanici agileswiftcargo ana sayfasina gider");
-
         // Ana sayfada "Why Agile Swift Cargo" yazısının bulunduğunu kontrol eder
-        furkan = new Furkan();
         String expectedYazi = "Why Agile Swift Cargo";
-        String actualYazi = furkan.WhyAgileSwiftCargoText.getText();
-
+        Locator locator = new Locator();
+        Actions actions = new Actions(driver);
+        actions.moveToElement(locator.WhyAgileSwiftCargoText).perform();
+        String actualYazi = locator.WhyAgileSwiftCargoText.getText();
         Assert.assertEquals(actualYazi,expectedYazi);
         extentTest.pass("Servis alanının doğru bir şekilde görüntülendiğini doğrular");
-
-
         // sayfayi kapatir
         extentTest.info("sayfayi kapatir");
-
-
-
 
     }
 }

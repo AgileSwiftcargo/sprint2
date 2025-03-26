@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import utilities.ConfigReader;
 import utilities.CrossTestBaseRapor;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 public class TC17_1 extends CrossTestBaseRapor {
     @Test
@@ -15,13 +16,15 @@ public class TC17_1 extends CrossTestBaseRapor {
         extentTest = extentReports.createTest("Login Sayfası Erişim Testi",
                 "Login sayfasına erişilebilmeli");
 
-        Driver.getDriver().get(ConfigReader.getProperty("Url"));
+        driver.get(ConfigReader.getProperty("Url"));
         extentTest.info("Kullanıcı Anasayfaya Gider");
 
-        Driver.getDriver().findElement(By.xpath("//*[.='Login']")).click();
+        driver.findElement(By.xpath("//*[.='Login']")).click();
         extentTest.info("Login butonuna tıklar");
 
-        WebElement emailBox = Driver.getDriver().findElement(By.id("email"));
+        ReusableMethods.bekle(1);
+
+        WebElement emailBox = driver.findElement(By.id("email"));
         Assert.assertTrue(emailBox.isDisplayed());
         extentTest.pass("Login Sayfasının Görüntülendiğini Test Eder");
 

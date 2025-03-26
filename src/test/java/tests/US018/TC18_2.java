@@ -16,7 +16,6 @@ public class TC18_2 extends CrossTestBaseRapor {
     public void MerchantProfilEdit() throws IOException {
 
         Locator locator = new Locator();
-        SoftAssert softAssert = new SoftAssert();
 
         extentTest = extentReports.createTest("Merchant Profil Edit Sayfasi Testi",
                 "Merchant, profil bilgilerini güncellemek için Edit düğmesine tıklayabilmeli ve Update Profile sayfasina ulasmali");
@@ -31,10 +30,10 @@ public class TC18_2 extends CrossTestBaseRapor {
             Assert.fail(e.getMessage());
         }
 
-        locator.emailInput.sendKeys("merchant.alpay@agileswiftcargo.com");
+        locator.emailInput.sendKeys(ConfigReader.getProperty("MerchantAlpayGecerliMail"));
         extentTest.info("Email yada tel no kismina gecerli emailini girer");
 
-        locator.passwordInput.sendKeys("Agile.0924");
+        locator.passwordInput.sendKeys(ConfigReader.getProperty("MerchantAlpayGecerliPassword"));
         extentTest.info("Password kismina gecerli passwordunu girer");
 
         try {
@@ -77,6 +76,6 @@ public class TC18_2 extends CrossTestBaseRapor {
         }
         extentTest.info("Sayfayi Kapatir");
 
-        softAssert.assertAll();
+
     }
 }

@@ -3,6 +3,7 @@ package tests.US008;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utilities.CrossTestBaseRapor;
 import utilities.Driver;
 import utilities.TestBaseRapor;
 
@@ -11,13 +12,15 @@ import java.time.LocalTime;
 
 import static utilities.Driver.driver;
 
-public class TC8_2 extends TestBaseRapor {
+public class TC8_2 extends CrossTestBaseRapor {
 
     @Test
     public void memnuniyetVerileriGoruntulemeSureTesti(){
+        extentTest = extentReports.createTest("Memnuniyet Verileri Görüntülenme Süre Testi",
+                "Memnuniyet verileri 4 saniye'nin altında görüntülenmeli");
         LocalTime start = LocalTime.now();
 
-        Driver.getDriver().get("https://qa.agileswiftcargo.com/");
+        driver.get("https://qa.agileswiftcargo.com/");
         driver.findElement(By.xpath(("//*[.='Happy Achievement']"))).isDisplayed();
 
 
@@ -26,6 +29,7 @@ public class TC8_2 extends TestBaseRapor {
         System.out.println("Memnuniyet verileri yuklenme suresi " + millis + " seconds");
 
         Assert.assertTrue(millis < 4);
+        extentTest.pass("Anasayfanın 4 saniye'nin altında görüntülendiğini doğrular");
     }
 
 
