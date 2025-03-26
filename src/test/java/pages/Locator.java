@@ -723,7 +723,7 @@ public class Locator {
     public WebElement selectHubBasligi;
 
     //şifre değiştir butonu//
-    @FindBy(xpath = "(//*[contains(@class,'dropdown-item')])[39]")
+    @FindBy(xpath = "(//i[@class='fas fa-key mr-2'])[1]")
     public WebElement sifeDegistirButonu;
 
     //eski şifre butonu//
