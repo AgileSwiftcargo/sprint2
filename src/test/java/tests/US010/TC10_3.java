@@ -64,7 +64,6 @@ public class TC10_3 extends CrossTestBaseRapor {
 
         extentTest.info("Sayfayi kapatir");
 
-
     }
 
 }

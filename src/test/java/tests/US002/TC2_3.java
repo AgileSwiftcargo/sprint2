@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.Locator;
@@ -28,7 +29,7 @@ public class TC2_3 extends CrossTestBaseRapor {
                 "Menu basliklari tiklandiginda secili ve vurgulu gozukmeli");
 
         driver.get(ConfigReader.getProperty("Url"));
-        softAssert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/");
+        Assert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/");
         extentTest.pass("Kullanici Anasayfaya gider");
 
         List<WebElement> navLinks = driver.findElements(By.xpath("//*[contains(@class, 'nav-link')]"));

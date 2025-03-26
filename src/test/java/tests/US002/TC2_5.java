@@ -78,6 +78,4 @@ public class TC2_5 extends CrossTestBaseRapor {
         softAssert.assertAll();
 
     }
-
-
 }
