@@ -11,8 +11,7 @@ import utilities.ConfigReader;
 import utilities.CrossTestBaseRapor;
 import utilities.Driver;
 public class TC15_3 extends CrossTestBaseRapor {
-    Busra busra ;
-    @Test
+       @Test
     public void sıkSorulanSorularTesti(){
         Locator locator = new Locator();
         SoftAssert softAssert = new SoftAssert();
