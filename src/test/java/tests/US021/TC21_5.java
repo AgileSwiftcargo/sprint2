@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.Locator;
 import utilities.ConfigReader;
 import utilities.CrossTestBaseRapor;
@@ -13,24 +14,26 @@ import utilities.ReusableMethods;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TC21_4 extends CrossTestBaseRapor {
+public class TC21_5 extends CrossTestBaseRapor {
 
     Locator locator;
+    SoftAssert softAssert = new SoftAssert();
 
     @Test
-    public void subjectAlaniBosTicketOlusturmaTesti () {
-        extentTest = extentReports.createTest("Subject Kutusu Boş Bırakıldığında TicketAdd Testi",
-                "Merchant, subject kutusunu boş bıraktığında yeni ticket oluşturamamalı ve hata mesajı almalı");
+    public void deparmentAlaniBosTicketOlusturmaTesti () {
+        extentTest = extentReports.createTest("Department Kutusu Boş Bırakıldığında TicketAdd Testi",
+                "Merchant, department kutusunu boş bıraktığında yeni ticket oluşturamalı ve hata mesajı almamalı");
 
         // ----Kullanıcı, https://qa.agileswiftcargo.com/ adresine gider----
         driver.get(ConfigReader.getProperty("Url"));
         extentTest.info("Kullanici agileswiftcargo ana sayfasina gider");
 
 
+
         //----Merchant gecerli bir e'mail ve geçerli bir password ile login olur----
         locator = new Locator();
 
-                     // Login butonu görünürlük
+                // Login butonu görünürlük
         Assert.assertTrue(locator.loginButonu.isDisplayed());
         extentTest.pass("Login butonunun görünür olduğunu test eder");
 
@@ -43,12 +46,13 @@ public class TC21_4 extends CrossTestBaseRapor {
         locator.passwordTextbox.sendKeys(ConfigReader.getProperty("MerchantKeremGecerliPassword"));
         extentTest.info("Geçerli bir password girer");
 
-        // Singin butonu görünürlük
+                // Singin butonu görünürlük
         Assert.assertTrue(locator.signInButton.isDisplayed());
         extentTest.pass("Singin butonunun görünür olduğunu test eder");
 
         locator.signInButton.click();
         extentTest.info("Sing in butonuna tiklar");
+
 
 
         //----Merchant Dashboard sayfasi açilmalidir----
@@ -62,7 +66,7 @@ public class TC21_4 extends CrossTestBaseRapor {
         Assert.assertTrue(locator.ticketLinki.isDisplayed());
         extentTest.pass("Menüde ticket bağlantısının görüntülendiğini test eder");
 
-                // Ticket linkine tıklanır ve sayfanın doğru yüklendiği test edilir
+        // Ticket linkine tıklanır ve sayfanın doğru yüklendiği test edilir
         locator.ticketLinki.click();
         extentTest.info("Ticket bağlantisina tiklar");
 
@@ -121,15 +125,12 @@ public class TC21_4 extends CrossTestBaseRapor {
         extentTest.pass("Date kutusunda bugünün tarihinin seçili olduğunu test eder");
 
 
-        //----Department: Sales olarak seçilir----
-        select = new Select(locator.departmentDdmElementi);
+        //----Subject görüntülenir ve "DenemeTest" metni girilir ----
+        Assert.assertTrue(locator.ticketAddSubjectBox.isDisplayed());
+        extentTest.pass("Subject kutusunun görüntülendiğini test eder");
 
-        Assert.assertTrue(locator.departmentDdmElementi.isDisplayed());
-        extentTest.pass("Department'in görüntülendiğini test eder");
-
-        select.selectByVisibleText("Sales");
-        extentTest.info("Department 'Sales' seçilir");
-
+        locator.ticketAddSubjectBox.sendKeys("DenemeTest");
+        extentTest.info("Subject kutusuna DenemeTest girilir");
 
 
         //----Attached ->Dosya Seç butonu görüntülenir ve "Deneme.rtf" dosyası yüklenir ----
@@ -158,16 +159,9 @@ public class TC21_4 extends CrossTestBaseRapor {
         extentTest.info("Save butonuna tiklar");
 
 
-        //----Hata mesajı kontrolü, "The subject field is required."
-        String expectedUyariYazisi = "The subject field is required.";
-        String actualUyariYazisi =
-                driver.findElement(By.xpath("//*[.='The subject field is required.']")).getText();
-        Assert.assertEquals(actualUyariYazisi,expectedUyariYazisi);
-        extentTest.pass("Kaydin yapilamadiğini test eder");
 
-
-        //----Kaydın başarılı olmadığını test eder
-        String expectedUrl2 = "https://qa.agileswiftcargo.com/merchant/support/create";
+        //----Kaydın başarılı oldugunu test eder
+        String expectedUrl2 = "https://qa.agileswiftcargo.com/merchant/support/index";
         String actualUrl2 = driver.getCurrentUrl();
         Assert.assertEquals(actualUrl2,expectedUrl2);
         extentTest.pass("Kayıt oluşturulamadığı test edildi");
@@ -186,7 +180,6 @@ public class TC21_4 extends CrossTestBaseRapor {
 
 
 
-
-
     }
+
 }

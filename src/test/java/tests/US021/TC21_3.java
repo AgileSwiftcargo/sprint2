@@ -30,7 +30,7 @@ public class TC21_3 extends CrossTestBaseRapor {
     @Test
     public void priorityAlaniBosTicketOlusturmaTesti () throws IOException {
         extentTest = extentReports.createTest("Priority Kutusu Boş Bırakıldığında TicketAdd Testi",
-                "Merchant, Priority kutusunu boş bıraktığında yeni ticket oluşturamamalı");
+                "Merchant, Priority kutusunu boş bıraktığında yeni ticket oluşturamamalı ve hata mesajı almalı ");
 
         // ----Kullanıcı, https://qa.agileswiftcargo.com/ adresine gider----
         driver.get(ConfigReader.getProperty("Url"));
