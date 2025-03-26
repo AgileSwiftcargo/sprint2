@@ -70,6 +70,9 @@ public class TC19_2 extends CrossTestBaseRapor {
         locator.saveChangeButton.click();
         extentTest.info("sifre kaydet e tıklar");
         ReusableMethods.bekle(2);
+
+
+
         extentTest.info("sayfayı kapatır");
 
 

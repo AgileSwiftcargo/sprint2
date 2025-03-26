@@ -14,11 +14,19 @@ public class TC19_1 extends CrossTestBaseRapor {
 
     @Test
     public void MerchantProfilUpdate() throws IOException {
-
-        Locator locator = new Locator();
-
         extentTest = extentReports.createTest("Merchant Profil Update Testi",
                 "Merchant Profil'ini yeni bilgilerle düzenleyebilmelidir.");
+        Locator locator = new Locator();
+        try {
+            driver.get(ConfigReader.getProperty("LoginUrl"));
+            Assert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/login");
+            extentTest.pass("Kullanici Login Sayfasina gider");
+        } catch (AssertionError e) {
+            captureFailure("Login Sayfasina Ulasilamiyor");
+            Assert.fail(e.getMessage());
+        }
+
+
 
         locator.emailInput.sendKeys("merchant.filiz@agileswiftcargo.com");
         extentTest.info("Email yada tel no kismina gecerli emailini girer");
