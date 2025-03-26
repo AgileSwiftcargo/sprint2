@@ -33,10 +33,12 @@ public class TC15_1 extends CrossTestBaseRapor {
      busra = new Busra();
 
      String expectedYazi = "Available Services";
-     String actualYazi = busra.AvailableServicesBaşlığı.getText();
+     String actualYazi= busra.AvailableServicesBaşlığı.getText();
 
      Assert.assertEquals(actualYazi,expectedYazi);
      extentTest.pass("Başlığı görüntüler");
+
+
 
 
 
