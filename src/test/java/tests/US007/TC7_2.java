@@ -31,19 +31,19 @@ public class TC7_2 extends CrossTestBaseRapor {
 
         //kullanıcı farklı karo seçenekleri için ilgili başlıklara tıklar
 
-        locator.navLinks.click();
+        locator.SamDayButonu.click();
         softAssert.assertEquals(driver.getCurrentUrl(),"//*[.='Same Day']");
         extentTest.pass("Same Day butonuna tıklar");
 
-        locator.navLinks.click();
+        locator.NextDayButonu.click();
         softAssert.assertEquals(driver.getCurrentUrl(),"//*[.='Next Day']");
         extentTest.pass("Next Day butonuna tıklar");
 
-        locator.navLinks.click();
+        locator.SubCityButonu.click();
         softAssert.assertEquals(driver.getCurrentUrl(),"//*[.='Sub City']");
         extentTest.pass("Sub City butonuna tıklar");
 
-        locator.navLinks.click();
+        locator.OutsideCityButonu.click();
         softAssert.assertEquals(driver.getCurrentUrl(),"//*[.='Outside City']");
         extentTest.pass("Outside City butonuna tıklar");
 

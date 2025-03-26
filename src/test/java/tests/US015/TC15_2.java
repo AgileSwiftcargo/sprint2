@@ -28,10 +28,10 @@ Busra busra ;
 
        //kullanıcı "Available services" başlığını görür
 
-       busra = new Busra();
+
 
        String expectedYazi = "Available Services";
-       String actualYazi= busra.AvailableServicesBaşlığı.getText();
+       String actualYazi= locator.AvailableServicesBaşlığı.getText();
 
        Assert.assertEquals(actualYazi,expectedYazi);
        extentTest.pass("Başlığı görüntüler");
