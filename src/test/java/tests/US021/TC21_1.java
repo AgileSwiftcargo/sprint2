@@ -46,7 +46,7 @@ public class TC21_1 extends CrossTestBaseRapor {
         extentTest.info("Sing in butonuna tiklar");
 
 
-        //----Merchant Dashboard sayfasi açilmalidir----
+        //----Merchant Dashboard sayfasina yönlendirilir----
         String expectedUrl = ConfigReader.getProperty("DashboardUrl");
         String actualUrl = driver.getCurrentUrl();
         Assert.assertEquals(actualUrl,expectedUrl);

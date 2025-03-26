@@ -158,12 +158,19 @@ public class TC21_4 extends CrossTestBaseRapor {
         extentTest.info("Save butonuna tiklar");
 
 
-        //----Kaydın başarılı olmadığını test eder, "The service field is required."
+        //----Hata mesajı kontrolü, "The subject field is required."
         String expectedUyariYazisi = "The subject field is required.";
         String actualUyariYazisi =
                 driver.findElement(By.xpath("//*[.='The subject field is required.']")).getText();
         Assert.assertEquals(actualUyariYazisi,expectedUyariYazisi);
         extentTest.pass("Kaydin yapilamadiğini test eder");
+
+
+        //----Kaydın başarılı olmadığını test eder
+        String expectedUrl2 = "https://qa.agileswiftcargo.com/merchant/support/create";
+        String actualUrl2 = driver.getCurrentUrl();
+        Assert.assertEquals(actualUrl2,expectedUrl2);
+        extentTest.pass("Kayıt oluşturulamadığı test edildi");
 
 
         //----Merchant logout olur----

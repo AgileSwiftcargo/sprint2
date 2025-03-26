@@ -167,9 +167,7 @@ public class TC21_3 extends CrossTestBaseRapor {
         extentTest.info("Save butonuna tiklar");
 
 
-        //----Hata mesajı kontrolü, "The service field is required."
-
-
+        //----Hata mesajı kontrolü, "The priority field is required."
         try {
             WebElement errorMessage =
                     driver.findElement(By.xpath("//*[.='The priority field is required.']"));

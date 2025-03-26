@@ -140,12 +140,14 @@ public class TC21_2 extends CrossTestBaseRapor {
         ReusableMethods.bekle(2);
 
 
+
         //----Description tex alanına "MerhabaManuelTest" notu girilmeli ----
         Assert.assertTrue(locator.descriptionBox.isDisplayed());
         extentTest.pass("Description kutusunun görüntülendiğini test eder");
 
         locator.descriptionBox.sendKeys("MerhabaManuelTest");
         extentTest.info("Description kutusuna MerhabaManuelTest girilir");
+
 
 
         //----Save butonuna basılır ----
@@ -156,11 +158,22 @@ public class TC21_2 extends CrossTestBaseRapor {
         extentTest.info("Save butonuna tiklar");
 
 
-        //----Kaydın başarılı olmadığını test eder, "The service field is required."
+
+        //----Hata mesajı kontrolü, "The service field is required."
         String expectedUyariYazisi = "The service field is required.";
         String actualUyariYazisi = locator.ticketAddServiceKayitUyariYazisi.getText();
         Assert.assertEquals(actualUyariYazisi,expectedUyariYazisi);
-        extentTest.pass("Kaydin yapilamadiğini test eder");
+        extentTest.pass("Hata mesajı görüntülenir");
+
+
+
+        //----Kaydın başarılı olmadığını test eder
+        String expectedUrl2 = "https://qa.agileswiftcargo.com/merchant/support/create";
+        String actualUrl2 = driver.getCurrentUrl();
+        Assert.assertEquals(actualUrl2,expectedUrl2);
+        extentTest.pass("Kayıt oluşturulamadığı test edildi");
+
+
 
         //----Merchant logout olur----
         locator.profilResmi.click();
