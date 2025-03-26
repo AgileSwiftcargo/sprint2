@@ -10,7 +10,7 @@ import utilities.ReusableMethods;
 
 import java.io.IOException;
 
-public class TC19_2 extends CrossTestBaseRapor {
+public class TC19_4 extends CrossTestBaseRapor {
 
     @Test
     public void MerchantProfilUpdate() throws IOException {
@@ -76,4 +76,5 @@ public class TC19_2 extends CrossTestBaseRapor {
 
     }
 }
+
 

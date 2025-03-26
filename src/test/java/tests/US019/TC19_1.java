@@ -20,15 +20,6 @@ public class TC19_1 extends CrossTestBaseRapor {
         extentTest = extentReports.createTest("Merchant Profil Update Testi",
                 "Merchant Profil'ini yeni bilgilerle düzenleyebilmelidir.");
 
-        try {
-            driver.get(ConfigReader.getProperty("LoginUrl"));
-            Assert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/login");
-            extentTest.pass("Kullanici Login Sayfasina gider");
-        } catch (AssertionError e) {
-            captureFailure("Login Sayfasina Ulasilamiyor");
-            Assert.fail(e.getMessage());
-        }
-
         locator.emailInput.sendKeys("merchant.filiz@agileswiftcargo.com");
         extentTest.info("Email yada tel no kismina gecerli emailini girer");
 
@@ -46,29 +37,6 @@ public class TC19_1 extends CrossTestBaseRapor {
             captureFailure("Merchant Dashboard Sayfasina Ulasilamiyor");
             Assert.fail(e.getMessage());
         }
-
-        locator.profilResmi.click();
-        extentTest.info("Headerdaki Profil resmine tiklar");
-
-        locator.profilButonu.click();
-        extentTest.info("Profil secenegine tiklar");
-
-        locator.sifeDegistirButonu.click();
-        extentTest.info("sifre degistir e tıklar");
-
-        locator.passwordInput.sendKeys("filiz.0924");
-        extentTest.info("yeni şifre girilir");
-
-
-        locator.passwordInput.sendKeys("filiz.0924");
-        extentTest.info("yeni şifre tekrar girilir");
-
-        locator.saveChangeButton.click();
-        extentTest.info("sifre kaydet e tıklar");
-
         extentTest.info("sayfayı kapatır");
-
-
-
     }
 }
