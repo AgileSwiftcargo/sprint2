@@ -30,10 +30,10 @@ public class TC18_2 extends CrossTestBaseRapor {
             Assert.fail(e.getMessage());
         }
 
-        locator.emailInput.sendKeys("merchant.alpay@agileswiftcargo.com");
+        locator.emailInput.sendKeys(ConfigReader.getProperty("MerchantAlpayGecerliMail"));
         extentTest.info("Email yada tel no kismina gecerli emailini girer");
 
-        locator.passwordInput.sendKeys("Agile.0924");
+        locator.passwordInput.sendKeys(ConfigReader.getProperty("MerchantAlpayGecerliPassword"));
         extentTest.info("Password kismina gecerli passwordunu girer");
 
         try {
