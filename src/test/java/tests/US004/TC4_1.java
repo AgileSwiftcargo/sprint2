@@ -48,6 +48,8 @@ public class TC4_1 extends CrossTestBaseRapor{
 
      Assert.assertEquals(actualTextboxTagName,expectedTextboxTagName);
 
+     Assert.assertTrue(locator.enterTrackingIdTextbox.isEnabled());
+
 
     //5_Sayfayı kapatır.
 

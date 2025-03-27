@@ -25,7 +25,11 @@ public class TC4_4 extends CrossTestBaseRapor {
     //3_Yanlış tracking id'yi girer.
         locator.enterTrackingIdTextbox.sendKeys(ConfigReader.getProperty("GecersizTrackId"));
     //4_Track Now butonuna tıklar.
+        String firstWindow = driver.getWindowHandle();
         locator.tracknowButton.click();
+        String secondWindow = driver.getWindowHandle();
+        Assert.assertEquals(secondWindow,firstWindow);
+
     //5_ Açılan sayfada textbox'ta AS741017851C olduğunu doğrular.
         String expectedGecersizTrackingKontrol = "# AS741017851C";
         String actualGecersizTrackingKontrol = driver

@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Locator;
 import utilities.CrossTestBaseRapor;
+import utilities.ReusableMethods;
 
 public class TC12_3 extends CrossTestBaseRapor {
 
@@ -34,8 +35,8 @@ public class TC12_3 extends CrossTestBaseRapor {
         WebElement phoneNumber = driver.findElement(By.xpath("//*[.='Phone : +13143383298']"));
         Assert.assertTrue(phoneNumber.isDisplayed());
 
-        String expectedPhoneNumver = "Email : info@agileswiftcargo.com";
-        Assert.assertEquals(mailAdres.getText(),expectedMailAdres);
+        String expectedPhoneNumber = "Phone : +13143383298";
+        Assert.assertEquals(phoneNumber.getText(),expectedPhoneNumber);
     //4_Firmanın adresinin görünür ve doğru olduğunu doğrular.
         WebElement address = driver.findElement(By.xpath("//*[.='Address: 491 Cottekill Rd Stone Ridge NY 12484 USA']"));
         Assert.assertTrue(address.isDisplayed());
@@ -47,9 +48,11 @@ public class TC12_3 extends CrossTestBaseRapor {
     //5_Google map haritasının var olduğunu doğrular.
 
 
-        WebElement googleMap = driver.findElement(By.xpath("//div[.='491 Cottekill Rd, Stone Ridge, NY 12484, Amerika Birleşik Devletleri']"));
+        WebElement googleMap = driver.findElement(By.xpath("//section[3]"));
         Actions actions = new Actions(driver);
         actions.moveToElement(googleMap).perform();
+
+        Assert.assertTrue(googleMap.isDisplayed());
 
 
     //6_Sayfayı kapatır.
