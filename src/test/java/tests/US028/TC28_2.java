@@ -1,4 +1,4 @@
-package tests.US021;
+package tests.US028;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,14 +8,14 @@ import pages.Locator;
 import utilities.ConfigReader;
 import utilities.CrossTestBaseRapor;
 
-public class TC21_1 extends CrossTestBaseRapor {
+public class TC28_2 extends CrossTestBaseRapor {
 
     Locator locator;
 
     @Test
-    public void ticketSayfasinaErisimTesti (){
-        extentTest = extentReports.createTest("Merchant Ticket Sayfasina Erisim Testi",
-                "Merchant, menüde ticket bağlantısını görüntülemeli ve tıklandığında doğru bağlantı açılmalı");
+    public void parcelsBaglantiDogrulukTesti (){
+        extentTest = extentReports.createTest("Parcel Bağlantı Doğruluk",
+                "Merchant, parcels bağlantısına tıkladığında doğru sayfa yüklenmelidir");
 
         // ----Kullanıcı, https://qa.agileswiftcargo.com/ adresine gider----
         driver.get(ConfigReader.getProperty("Url"));
@@ -25,12 +25,12 @@ public class TC21_1 extends CrossTestBaseRapor {
         //----Merchant gecerli bir e'mail ve geçerli bir password ile login olur----
         locator = new Locator();
 
-                // Login butonu görünürlük
+        // Login butonu görünürlük
         Assert.assertTrue(locator.loginButonu.isDisplayed());
         extentTest.pass("Login butonunun görünür olduğunu test eder");
 
         locator.loginButonu.click();
-        extentTest.info("Merchant login butonuna tiklar gider");
+        extentTest.info("Login butonuna tiklar");
 
         locator.emailTextbox.sendKeys(ConfigReader.getProperty("MerchantKeremGecerliMail"));
         extentTest.info("Geçerli bir email girer");
@@ -38,7 +38,7 @@ public class TC21_1 extends CrossTestBaseRapor {
         locator.passwordTextbox.sendKeys(ConfigReader.getProperty("MerchantKeremGecerliPassword"));
         extentTest.info("Geçerli bir password girer");
 
-                // Singin butonu görünürlük
+        // Singin butonu görünürlük
         Assert.assertTrue(locator.signInButton.isDisplayed());
         extentTest.pass("Singin butonunun görünür olduğunu test eder");
 
@@ -46,23 +46,35 @@ public class TC21_1 extends CrossTestBaseRapor {
         extentTest.info("Sing in butonuna tiklar");
 
 
-        //----Merchant Dashboard sayfasina yönlendirilir----
+        //----Merchant Dashboard sayfasi açilmalidir----
         String expectedUrl = ConfigReader.getProperty("DashboardUrl");
         String actualUrl = driver.getCurrentUrl();
-        Assert.assertEquals(actualUrl,expectedUrl);
-        extentTest.pass("Merchant Dashboard sayfasının yüklendiği test eder");
+        Assert.assertEquals(actualUrl, expectedUrl);
+        extentTest.pass("Merchant Dashboard sayfasının başarılı yüklendiği test edilir");
 
 
-        //----Menüde ticket bağlantısına görüntüler ve tıklar----
-        Assert.assertTrue(locator.ticketLinki.isDisplayed());
-        extentTest.pass("Menüde ticket bağlantısının görüntülendiğini test eder");
 
-        locator.ticketLinki.click();
-        WebElement ticketTitleYaziElementi = driver.findElement(By.className("h3"));
-        String expectedtTitle = "Ticket";
-        String actualTitle = ticketTitleYaziElementi.getText();
-        Assert.assertEquals(actualTitle,expectedtTitle);
-        extentTest.pass("Ticket sayfasının başarılı olarak yüklendiğini test eder");
+        //----Menüde parcels bağlantısına görüntüler ve tıklar----
+        WebElement parcelsBaglantiElementi =
+                driver.findElement(By.xpath("(//a[@class='nav-link '])[7]"));
+        Assert.assertTrue(parcelsBaglantiElementi.isDisplayed());
+        extentTest.pass("Menüde parcels bağlantısının görüntülendiğini test eder");
+
+
+        //----Parcels sayfasına tıklanır----
+        parcelsBaglantiElementi.click();
+        String expectedParcelsUrl = "https://qa.agileswiftcargo.com/merchant/parcel/index";
+        String actualParcelsUrl = driver.getCurrentUrl();
+        Assert.assertEquals(actualParcelsUrl,expectedParcelsUrl);
+        extentTest.pass("Parcels sayfasına gidildiğini test edilir");
+
+
+        //----Sayfanın düzgün yüklendiği test edilir----
+        WebElement parcelYaziElementi = driver.findElement(By.xpath("//*[.='Parcels ']"));
+        String expectedParcelTitle = "Parcels";
+        String actualParcelTitle = parcelYaziElementi.getText();
+        Assert.assertEquals(actualParcelTitle,expectedParcelTitle);
+        extentTest.pass("Parcels sayfasının düzgün yüklendiği test edilir");
 
 
         //----Merchant logout olur----
@@ -78,13 +90,12 @@ public class TC21_1 extends CrossTestBaseRapor {
         Assert.assertEquals(actualAfterLogoutUrl,expectedAfterLogoutUrl);
         extentTest.pass("Logout başarılı olduğu test edilir");
 
-        extentTest.info("sayfayi kapatir");
 
+        extentTest.info("Sayfayi kapatir");
 
 
 
 
 
     }
-
 }
