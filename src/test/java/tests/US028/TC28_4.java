@@ -1,6 +1,7 @@
 package tests.US028;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,14 +9,14 @@ import pages.Locator;
 import utilities.ConfigReader;
 import utilities.CrossTestBaseRapor;
 
-public class TC28_1 extends CrossTestBaseRapor {
+public class TC28_4 extends CrossTestBaseRapor {
 
     Locator locator;
 
     @Test
-    public void parcelsBaglantiGorunurlukTesti (){
-        extentTest = extentReports.createTest("Parcel Görünürlük",
-                "Merchant, parcels bağlantısını menüde görüntüleyebilmelidir");
+    public void parcelsTarihFiltreTesti (){
+        extentTest = extentReports.createTest("Parcels Tarih Filtresi",
+                "Merchant, tarih filtresi doğru parcel'leri listelemelidir");
 
         // ----Kullanıcı, https://qa.agileswiftcargo.com/ adresine gider----
         driver.get(ConfigReader.getProperty("Url"));
@@ -25,7 +26,7 @@ public class TC28_1 extends CrossTestBaseRapor {
         //----Merchant gecerli bir e'mail ve geçerli bir password ile login olur----
         locator = new Locator();
 
-        // Login butonu görünürlük
+                // Login butonu görünürlük
         Assert.assertTrue(locator.loginButonu.isDisplayed());
         extentTest.pass("Login butonunun görünür olduğunu test eder");
 
@@ -38,7 +39,7 @@ public class TC28_1 extends CrossTestBaseRapor {
         locator.passwordTextbox.sendKeys(ConfigReader.getProperty("MerchantKeremGecerliPassword"));
         extentTest.info("Geçerli bir password girer");
 
-        // Singin butonu görünürlük
+                // Singin butonu görünürlük
         Assert.assertTrue(locator.signInButton.isDisplayed());
         extentTest.pass("Singin butonunun görünür olduğunu test eder");
 
@@ -59,6 +60,48 @@ public class TC28_1 extends CrossTestBaseRapor {
                 driver.findElement(By.xpath("(//a[@class='nav-link '])[7]"));
         Assert.assertTrue(parcelsBaglantiElementi.isDisplayed());
         extentTest.pass("Menüde parcels bağlantısının görüntülendiğini test eder");
+
+
+        //----Parcels sayfasına tıklanır----
+        parcelsBaglantiElementi.click();
+        String expectedParcelsUrl = "https://qa.agileswiftcargo.com/merchant/parcel/index";
+        String actualParcelsUrl = driver.getCurrentUrl();
+        Assert.assertEquals(actualParcelsUrl,expectedParcelsUrl);
+        extentTest.pass("Parcels sayfasına gidildiğini test edilir");
+
+
+        //----Sayfanın düzgün yüklendiği test edilir----
+        WebElement parcelYaziElementi = driver.findElement(By.xpath("//*[.='Parcels ']"));
+        String expectedParcelTitle = "Parcels";
+        String actualParcelTitle = parcelYaziElementi.getText();
+        Assert.assertEquals(actualParcelTitle,expectedParcelTitle);
+        extentTest.pass("Parcels sayfasının düzgün yüklendiği test edilir");
+
+
+        //----Tarih box'ı görüntülenir ve filtre için "03/03/2025 To 03/04/2025" girilir----
+        WebElement dateBoxElementi = driver.findElement(By.id("date"));
+        Assert.assertTrue(dateBoxElementi.isDisplayed());
+        extentTest.pass("Filtrede date alani olduğu test edilir");
+
+        dateBoxElementi.sendKeys("03/03/2025 To 03/04/2025" + Keys.ENTER);
+        extentTest.info("Tarih filtresine '03/03/2025 To 03/04/2025'girilir ve ENTER tuşuna basılır");
+
+
+        //----Filtreme için filter tusuna basilir----
+        WebElement filterButonElementi = driver.findElement(By.xpath("//*[.=' Filter']"));
+        Assert.assertTrue(filterButonElementi.isDisplayed());
+        extentTest.pass("Filter butonu görüntülendiği test edilir");
+
+        filterButonElementi.click();
+        extentTest.info("Filter butonuna basılır");
+
+
+
+
+
+
+
+
 
 
         //----Merchant logout olur----
@@ -82,4 +125,5 @@ public class TC28_1 extends CrossTestBaseRapor {
 
 
     }
+
 }

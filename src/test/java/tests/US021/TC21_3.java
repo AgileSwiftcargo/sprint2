@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class TC21_3 extends CrossTestBaseRapor {
 
@@ -116,6 +117,7 @@ public class TC21_3 extends CrossTestBaseRapor {
 
         String actualDateValue = locator.ticketAddDateBox.getAttribute("value");
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        format1.setTimeZone(TimeZone.getTimeZone("America/New_York")); // New York (Eastern Time) kullanılıyor
         String expectedDateValue = format1.format(new Date());
         Assert.assertEquals(actualDateValue,expectedDateValue);
         extentTest.pass("Date kutusunda bugünün tarihinin seçili olduğunu test eder");
@@ -146,8 +148,9 @@ public class TC21_3 extends CrossTestBaseRapor {
         extentTest.pass("Attached kutusunun görüntülendiğini test eder");
 
         WebElement dosyaSecButonu = locator.attachedBoxDosyaSecButonu;
-        String filePath = "C:\\Users\\Kerem Hürşad\\Desktop\\Deneme.rtf";
+        String filePath = System.getProperty("user.home")+"\\Desktop\\Deneme.rtf";
         dosyaSecButonu.sendKeys(filePath);
+        extentTest.info("Deneme eklentisi eklenir");
         ReusableMethods.bekle(2);
 
 
@@ -197,6 +200,10 @@ public class TC21_3 extends CrossTestBaseRapor {
         locator.loguotButonu.click();
         extentTest.info("Logout olur");
 
+        String expectedAfterLogoutUrl = ConfigReader.getProperty("Url");
+        String actualAfterLogoutUrl = driver.getCurrentUrl();
+        Assert.assertEquals(actualAfterLogoutUrl,expectedAfterLogoutUrl);
+        extentTest.pass("Logout başarılı olduğu test edilir");
 
         extentTest.info("Sayfayi kapatir");
 
