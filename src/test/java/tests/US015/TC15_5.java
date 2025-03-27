@@ -8,33 +8,32 @@ import utilities.ConfigReader;
 import utilities.CrossTestBaseRapor;
 import utilities.ReusableMethods;
 
-public class TC15_4 extends CrossTestBaseRapor {
-
-
+public class TC15_5 extends CrossTestBaseRapor {
 @Test
-public void iletisimBilgileri(){
+    public void sayfaylailgilibilgialma(){
 
     Locator locator = new Locator();
     SoftAssert softAssert = new SoftAssert();
 
-    extentTest = extentReports.createTest("iletişim bilgileri testi",
-            "kullanıcı iletişim bilgilerine ulaşmalı");
 
+    extentTest = extentReports.createTest("sayfayla ilgili bilgi alma testi",
+            "Kullanıcı siteyle ilgili misyonu,vizyonuyla ilgili" +
+                    "bilgi alabilmesli");
 
     driver.get(ConfigReader.getProperty("Url"));
     extentTest.info("Anasayfaya gider");
 
 
     JavascriptExecutor js = (JavascriptExecutor) driver;
-    js.executeScript("arguments[0].scrollIntoView(true);", locator.ContactUsButonu);
+    js.executeScript("arguments[0].scrollIntoView(true);", locator.AboutUsButonu);
     ReusableMethods.bekle(1);
 
-
-    softAssert.assertEquals(driver.getCurrentUrl(),"(//*[contains(@class,'list-ite')])[7]");
+    softAssert.assertEquals(driver.getCurrentUrl(),"(//*[contains(@class,'list-ite')])[6]");
     extentTest.info("ilgili sayfa açılır");
 
-    locator.ContactUsButonu.click();
+    locator.AboutUsButonu.click();
     ReusableMethods.bekle(1);
+
 
 
 
@@ -42,10 +41,6 @@ public void iletisimBilgileri(){
 
 
 }
-
-
-
-
 
 
 

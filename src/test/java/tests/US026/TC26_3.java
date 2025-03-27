@@ -1,26 +1,22 @@
 package tests.US026;
 
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 import pages.Locator;
 import utilities.ConfigReader;
 import utilities.CrossTestBaseRapor;
-import utilities.Driver;
-import utilities.ReusableMethods;
 
-public class TC26_1 extends CrossTestBaseRapor {
-Locator locator ;
+public class TC26_3 extends CrossTestBaseRapor{
+Locator locator;
 @Test
-public void bankalarıGorutulemek(){
+    public  void bankaLogosuGoruntuleme(){
 
-    extentTest = extentReports.createTest("kullanılan bankaları görüntüleyebilme testi" ,
-            "kullanıcı bankalbilgilerine ulaşabilmeli ");
+    extentTest = extentReports.createTest("banka logoso görüntüleme testi" ,
+            "banka logosu görünür olmalı");
 
     driver.get(ConfigReader.getProperty("Url"));
     extentTest.info("Kullanici agileswiftcargo ana sayfasina gider");
 
     locator = new Locator();
-
     locator.loginButonu.click();
     extentTest.info("Merchant login butonuna tıkalar");
 
@@ -37,7 +33,7 @@ public void bankalarıGorutulemek(){
     //menüde Accounts butonuna tıklar
     locator.accountLinki.click();
     locator.payOutLinki.click();
-    extentTest.info("banka bilgilerini görür");
+    extentTest.info("banka logosunu  görür");
 
 
 
@@ -47,10 +43,6 @@ public void bankalarıGorutulemek(){
 
 
 }
-
-
-
-
 
 
 
