@@ -21,6 +21,7 @@ public class TC10_2 extends CrossTestBaseRapor {
         driver.get("https://qa.agileswiftcargo.com/get-blogs");
         softAssert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/get-blogs");
         extentTest.pass("Blogs sayfasina gider");
+        ReusableMethods.bekle(3);
 
         softAssert.assertTrue(locator.blogsYazisi.isDisplayed());
         extentTest.pass("Sayfada Blogs yazisinin oldugunu dogrular");
@@ -36,7 +37,7 @@ public class TC10_2 extends CrossTestBaseRapor {
         extentTest.pass("Sayfada yazi basligi oldugunu dogrular");
 
         extentTest.info("Sayfayi Kapatir");
-        ReusableMethods.bekle(1);
+        ReusableMethods.bekle(5);
 
         softAssert.assertAll();
     }
