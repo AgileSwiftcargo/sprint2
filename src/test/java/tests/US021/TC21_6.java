@@ -25,31 +25,36 @@ public class TC21_6 extends CrossTestBaseRapor {
         // ----Kullanıcı, https://qa.agileswiftcargo.com/ adresine gider----
         driver.get(ConfigReader.getProperty("Url"));
         extentTest.info("Kullanici agileswiftcargo ana sayfasina gider");
+        ReusableMethods.bekle(2);
 
 
 
         //----Merchant gecerli bir e'mail ve geçerli bir password ile login olur----
         locator = new Locator();
 
-        // Login butonu görünürlük
+             // Login butonu görünürlük
         Assert.assertTrue(locator.loginButonu.isDisplayed());
         extentTest.pass("Login butonunun görünür olduğunu test eder");
 
         locator.loginButonu.click();
         extentTest.info("Login butonuna tiklar");
+        ReusableMethods.bekle(1);
 
         locator.emailTextbox.sendKeys(ConfigReader.getProperty("MerchantKeremGecerliMail"));
         extentTest.info("Geçerli bir email girer");
+        ReusableMethods.bekle(1);
 
         locator.passwordTextbox.sendKeys(ConfigReader.getProperty("MerchantKeremGecerliPassword"));
         extentTest.info("Geçerli bir password girer");
+        ReusableMethods.bekle(1);
 
-        // Singin butonu görünürlük
+             // Singin butonu görünürlük
         Assert.assertTrue(locator.signInButton.isDisplayed());
         extentTest.pass("Singin butonunun görünür olduğunu test eder");
 
         locator.signInButton.click();
         extentTest.info("Sing in butonuna tiklar");
+        ReusableMethods.bekle(3);
 
 
 
@@ -67,6 +72,7 @@ public class TC21_6 extends CrossTestBaseRapor {
         // Ticket linkine tıklanır ve sayfanın doğru yüklendiği test edilir
         locator.ticketLinki.click();
         extentTest.info("Ticket bağlantisina tiklar");
+        ReusableMethods.bekle(2);
 
         WebElement ticketTitleYaziElementi = driver.findElement(By.className("h3"));
         String expectedtTitle = "Ticket";
@@ -81,6 +87,7 @@ public class TC21_6 extends CrossTestBaseRapor {
 
         locator.ticketAddButonu.click();
         extentTest.info("TicketAdd butonuna tiklar");
+        ReusableMethods.bekle(2);
 
         String expectedTicketAddUrl = ConfigReader.getProperty("TicketAddUrl");
         String actualTicketAddUrl = driver.getCurrentUrl();
@@ -99,6 +106,7 @@ public class TC21_6 extends CrossTestBaseRapor {
 
         select.selectByVisibleText("Delivery");
         extentTest.info("Service 'Delivery' seçilir");
+        ReusableMethods.bekle(2);
 
 
 
@@ -110,6 +118,7 @@ public class TC21_6 extends CrossTestBaseRapor {
 
         select.selectByVisibleText("High");
         extentTest.info("Priority 'High' seçilir");
+        ReusableMethods.bekle(2);
 
 
         //----Date görüntülenir (default bugün tarihi seçili olduğu test edilir "GG.AA.YYYY")----
@@ -122,6 +131,7 @@ public class TC21_6 extends CrossTestBaseRapor {
         String expectedDateValue = format1.format(new Date());
         Assert.assertEquals(actualDateValue,expectedDateValue);
         extentTest.pass("Date kutusunda bugünün tarihinin seçili olduğunu test eder");
+        ReusableMethods.bekle(2);
 
 
 
@@ -133,6 +143,7 @@ public class TC21_6 extends CrossTestBaseRapor {
 
         select.selectByVisibleText("Sales");
         extentTest.info("Department 'Sales' seçilir");
+        ReusableMethods.bekle(2);
 
 
 
@@ -142,6 +153,7 @@ public class TC21_6 extends CrossTestBaseRapor {
 
         locator.ticketAddSubjectBox.sendKeys("DenemeTest");
         extentTest.info("Subject kutusuna DenemeTest girilir");
+        ReusableMethods.bekle(2);
 
 
 
@@ -151,6 +163,7 @@ public class TC21_6 extends CrossTestBaseRapor {
 
         locator.descriptionBox.sendKeys("MerhabaManuelTest");
         extentTest.info("Description kutusuna MerhabaManuelTest girilir");
+        ReusableMethods.bekle(2);
 
 
         //----Save butonuna basılır ----
@@ -176,10 +189,12 @@ public class TC21_6 extends CrossTestBaseRapor {
 
         //----Merchant logout olur----
         locator.profilResmi.click();
+        ReusableMethods.bekle(2);
         Assert.assertTrue(locator.loguotButonu.isDisplayed());
         extentTest.pass("Logout butonu başarılı bir şekilde görüntülendiğini test eder");
 
         locator.loguotButonu.click();
+        ReusableMethods.bekle(1);
         extentTest.info("Logout olur");
 
         String expectedAfterLogoutUrl = ConfigReader.getProperty("Url");
