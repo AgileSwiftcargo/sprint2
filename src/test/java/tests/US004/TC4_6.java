@@ -1,9 +1,14 @@
 package tests.US004;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Locator;
 import utilities.ConfigReader;
 import utilities.CrossTestBaseRapor;
+
+import java.util.List;
 
 public class TC4_6 extends CrossTestBaseRapor {
 
@@ -25,6 +30,14 @@ public class TC4_6 extends CrossTestBaseRapor {
     //4_Track Now butonuna tıklar.
         locator.tracknowButton.click();
     //5_Tamamlanması gereken adımları ve tahminen ne zaman tamamlanacağının var olduğunu doğrular.
+        List<WebElement> cargoStepsList =
+                driver.findElements(By.xpath("//div[@class='cd-timeline__block js-cd-block']"));
+        int expectedCargoSteps = 7;
+        int actualCargoSteps = cargoStepsList.size();
+
+        Assert.assertEquals(actualCargoSteps,expectedCargoSteps);
+        System.out.println(actualCargoSteps);
+
     //6_Sayfayı kapatır.
 
     }

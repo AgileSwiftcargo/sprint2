@@ -8,6 +8,7 @@ import pages.Locator;
 import utilities.ConfigReader;
 import utilities.CrossTestBaseRapor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TC12_1 extends CrossTestBaseRapor {
@@ -32,11 +33,14 @@ public class TC12_1 extends CrossTestBaseRapor {
         // Header kısmında Contact bölümünün olduğunu doğrulama
 
         String expectedButton = "Contact";
+        ArrayList<String> navList = new ArrayList<>();
 
         List<WebElement> buttons = driver.findElements(By.xpath("//ul[@class='navbar-nav']"));
         for (int i= 0; i< buttons.size(); i++){
             Assert.assertTrue(buttons.get(i).getText().contains(expectedButton));
+            navList.add(buttons.get(i).getText());
         }
+        System.out.println(navList);
 
     //3_Sayfayı kapatır.
 
