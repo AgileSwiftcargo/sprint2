@@ -39,26 +39,65 @@ public class TC22_3 extends CrossTestBaseRapor {
         locator.signInButton.click();
         extentTest.info("Sing in butonuna tiklar");
 
-
-        //Menüde gelir bağlantısını görüntüler.
-        //Assert.assertTrue(locator.reportsMenuInput.isDisplayed());
-        //extentTest.pass("Menüde gelir verileri bağlantısı görüntülenir");
+        // Reports menüsünü açalım
         locator.reportsMenuInput.click();
-
-        List<WebElement> navLinks = driver.findElements(By.xpath("//*[@id='reports']//li"));
-
-        for (WebElement button : navLinks) {
-            locator.reportsMenuInput.click();
-            WebElement aTag = button.findElement(By.tagName("a"));
-            String currentUrl = driver.getCurrentUrl();
-            aTag.click();
-            String newUrl = driver.getCurrentUrl();
-            //Assert.assertEquals(currentUrl,newUrl);
-            extentTest.info(" göründü ve tıklandı. Yeni link: "+newUrl);
-            driver.navigate().back();
+        extentTest.info("Reports menüsüne tıklandı");
+        
+        try {
+            Thread.sleep(1000); // Menünün açılması için kısa bir bekleme
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
+        // Tüm alt menü linklerini bulalım
+        List<WebElement> navLinks = driver.findElements(By.xpath("//div[@id='reports']//ul[@class='nav flex-column']/li/a"));
+        extentTest.info("Reports menüsü altında " + navLinks.size() + " adet link bulundu");
 
+        // Her bir link için işlem yapalım
+        for (int i = 0; i < navLinks.size(); i++) {
+            // Her seferinde elementleri yeniden bulmamız gerekiyor çünkü sayfa yenilendiğinde referanslar geçersiz oluyor !!! BUNA DİKKAT ET
+            List<WebElement> currentLinks = driver.findElements(By.xpath("//div[@id='reports']//ul[@class='nav flex-column']/li/a"));
+            WebElement currentLink = currentLinks.get(i);
+            
+            // Menünün açık olduğundan emin olalım
+            if (!driver.findElement(By.id("reports")).getAttribute("class").contains("show")) {
+                locator.reportsMenuInput.click();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            
+            // Link bilgilerini alalım
+            String linkText = currentLink.getText();
+            Assert.assertTrue(currentLink.isDisplayed(), linkText + " linki görünür değil");
+            extentTest.info(linkText + " linki görünür");
+            
+            String currentUrl = driver.getCurrentUrl();
+            
+            // Linke tıklayalım
+            currentLink.click();
+            extentTest.pass(linkText + " linkine tıklandı");
+            
+            try {
+                Thread.sleep(2000); // Sayfanın yüklenmesi için bekleme
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            
+            String newUrl = driver.getCurrentUrl();
+            extentTest.pass(linkText + " linki açıldı. Yeni URL: " + newUrl);
+            
+            // Önceki sayfaya dönelim
+            driver.navigate().back();
+            
+            try {
+                Thread.sleep(1000); // Geri dönüş için bekleme
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
         //Merchant logout olur
         locator.profilResmi.click();
@@ -66,12 +105,6 @@ public class TC22_3 extends CrossTestBaseRapor {
         extentTest.info("Logout olur");
 
         extentTest.info("sayfayi kapatir");
-
-
-
-
-
-
     }
 
 }
