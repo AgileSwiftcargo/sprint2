@@ -1,6 +1,7 @@
 package tests.US025;
 
 import com.github.javafaker.Faker;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -73,8 +74,7 @@ public class TC25_3 extends CrossTestBaseRapor {
 
         locator.parcelEkle.click();
         ReusableMethods.bekle(1);
-        //locator.createParcelDropdown.click();
-       // locator.createParcelTextBox.sendKeys("Merchant Alpay");
+
         locator.createParcelPickupAddress.clear();
         locator.createParcelPickupAddress.sendKeys("Greenwich, London, UK");
         locator.createParcelSellingPrice.sendKeys("100");
@@ -93,9 +93,7 @@ public class TC25_3 extends CrossTestBaseRapor {
         locator.createParcelPickupPhone.sendKeys("01254887566");
         locator.createParcelCashCollection.sendKeys("50");
 
-        //locator.createParcelWeightDropdown.click();
         ReusableMethods.bekle(1);
-        //locator.createParcelWeightTextBox.click();
 
         String customerName = faker.name().fullName();
         locator.createParcelCustomerName.sendKeys(customerName);
