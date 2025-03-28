@@ -15,8 +15,9 @@ public class TC28_4 extends CrossTestBaseRapor {
 
     @Test
     public void parcelsTarihFiltreTesti (){
-        extentTest = extentReports.createTest("Parcels Tarih Filtresi",
+        extentTest = extentReports.createTest("Parcels Tarih Filtresi Testi",
                 "Merchant, tarih filtresi doğru parcel'leri listelemelidir");
+
 
         // ----Kullanıcı, https://qa.agileswiftcargo.com/ adresine gider----
         driver.get(ConfigReader.getProperty("Url"));
@@ -97,9 +98,13 @@ public class TC28_4 extends CrossTestBaseRapor {
 
 
 
-
-
-
+        //----Ekranda 1 sonuç listelendiği kontrol edilir "Showing 1 to 1 of 1 results"----
+        WebElement parcelsSonucYaziElementi =
+                driver.findElement(By.xpath("//*[@class='p-2 small']"));
+        String expectedSonucYazisi = "Showing 1 to 1 of 1 results";
+        String actualSonucYazisi = parcelsSonucYaziElementi.getText();
+        Assert.assertEquals(actualSonucYazisi,expectedSonucYazisi);
+        extentTest.pass("Ekranda 1 adet sonuc listelendigini test edilir");
 
 
 

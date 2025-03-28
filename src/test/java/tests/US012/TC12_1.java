@@ -23,12 +23,15 @@ public class TC12_1 extends CrossTestBaseRapor {
 
         //1_https://qa.agileswiftcargo.com/ adresine gider.
         driver.get(ConfigReader.getProperty("Url"));
+        Assert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/");
+        extentTest.pass("Kullanici Anasayfaya gider");
 
     //2_Sayfanın header kısmında "Contact" menü başlığı olduğunu doğrular.
 
         String expectedName = "Contact";
         String actualName = locator.navContact.getText();
         Assert.assertEquals(actualName,expectedName);
+        extentTest.pass("Header'da contact butonu bulunmaktadır.");
 
         // Header kısmında Contact bölümünün olduğunu doğrulama
 
@@ -40,9 +43,10 @@ public class TC12_1 extends CrossTestBaseRapor {
             Assert.assertTrue(buttons.get(i).getText().contains(expectedButton));
             navList.add(buttons.get(i).getText());
         }
-        System.out.println(navList);
+        extentTest.pass("Header'da contact butonu bulunmaktadır.(Test2)");
 
     //3_Sayfayı kapatır.
+        extentTest.info("Sayfayi Kapatir");
 
 
     }
