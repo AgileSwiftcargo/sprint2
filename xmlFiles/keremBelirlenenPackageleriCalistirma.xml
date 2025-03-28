@@ -13,16 +13,18 @@
             <package name="tests.US005"></package>
             <package name="tests.US013"></package>
             <package name="tests.US021"></package>
+            <package name="tests.US028"></package>
 
         </packages>
     </test>
 
-    <test name="Firefox ile calisacak class'lar">
-        <parameter name="kullanilacakBrowser" value="firefox"></parameter>
+    <test name="Edge ile calisacak class'lar">
+        <parameter name="kullanilacakBrowser" value="edge"></parameter>
         <packages>
             <package name="tests.US005"></package>
             <package name="tests.US013"></package>
             <package name="tests.US021"></package>
+            <package name="tests.US028"></package>
 
         </packages>
     </test>
