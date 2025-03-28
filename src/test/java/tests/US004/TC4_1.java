@@ -26,6 +26,8 @@ public class TC4_1 extends CrossTestBaseRapor{
     //1_https://qa.agileswiftcargo.com/ adresine gider.
 
         driver.get(ConfigReader.getProperty("Url"));
+        Assert.assertEquals(driver.getCurrentUrl(),"https://qa.agileswiftcargo.com/");
+        extentTest.pass("Kullanici Anasayfaya gider");
 
     //2_Sayfada tracking id textbox'ının ve içerisinde "Enter tracking id" yazısının var olduğunu doğrular.
 
@@ -33,11 +35,12 @@ public class TC4_1 extends CrossTestBaseRapor{
     String expectedPlaceholderValue = "Enter tracking id";
 
     Assert.assertEquals(actualPlaceholderValue,expectedPlaceholderValue);
-
+        extentTest.pass("Kullanici Track Id textbox'ının içerisinde Enter tracking id yazısının olduğunu doğrular.");
 
     //3_Sayfada tracknow butonu olduğunu doğrular.
 
      Assert.assertTrue(locator.tracknowButton.isDisplayed());
+        extentTest.pass("Sayfada trackNow butonu olduğunu doğrular.");
 
 
     //4_Textbox'a tıkladığınızda veri girebildiğinizi doğrular.
@@ -47,13 +50,14 @@ public class TC4_1 extends CrossTestBaseRapor{
      String actualTextboxTagName = locator.enterTrackingIdTextbox.getTagName();
 
      Assert.assertEquals(actualTextboxTagName,expectedTextboxTagName);
+        extentTest.pass("TrackID textbox'ına veri girilebildiğini doğrular.");
 
      Assert.assertTrue(locator.enterTrackingIdTextbox.isEnabled());
+        extentTest.pass("TrackID textbox'ına erişilebildiğini doğrular..");
 
 
     //5_Sayfayı kapatır.
-
-
+        extentTest.info("Sayfayi Kapatir");
 
     }
 

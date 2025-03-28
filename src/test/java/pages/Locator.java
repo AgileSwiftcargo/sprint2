@@ -943,14 +943,11 @@ public class Locator {
     @FindBy( xpath = "//*[@name='service']")
     public WebElement serviceDdmElementi;
 
+    @FindBy( xpath = " (//*[@type='button'])[3]")
+    public WebElement faqBirinciSoru;
 
-
-
-
-
-
-
+    @FindBy( xpath = " (//*[@type='button'])[4]")
+    public WebElement faqikinciSoru;
 
 
 }
-

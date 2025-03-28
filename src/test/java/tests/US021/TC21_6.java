@@ -14,42 +14,48 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-public class TC21_2 extends CrossTestBaseRapor {
-
+public class TC21_6 extends CrossTestBaseRapor {
     Locator locator;
 
     @Test
-    public void servisAlaniBosTicketOlusturmaTesti () {
-        extentTest = extentReports.createTest("Service Kutusu Boş Bırakıldığında TicketAdd Testi",
-                "Merchant, service kutusunu boş bıraktığında yeni ticket oluşturamamalı ve hata mesajı almalı");
+    public void attachedAlaniBosTicketOlusturmaTesti () {
+        extentTest = extentReports.createTest("Attached Kutusu Boş Bırakıldığında TicketAdd Testi",
+                "Merchant, attached kutusunu boş bıraktığında yeni ticket oluşturamalı ve onay mesajı almalı");
 
         // ----Kullanıcı, https://qa.agileswiftcargo.com/ adresine gider----
         driver.get(ConfigReader.getProperty("Url"));
         extentTest.info("Kullanici agileswiftcargo ana sayfasina gider");
+        ReusableMethods.bekle(2);
+
 
 
         //----Merchant gecerli bir e'mail ve geçerli bir password ile login olur----
         locator = new Locator();
 
-        // Login butonu görünürlük
+             // Login butonu görünürlük
         Assert.assertTrue(locator.loginButonu.isDisplayed());
         extentTest.pass("Login butonunun görünür olduğunu test eder");
 
         locator.loginButonu.click();
         extentTest.info("Login butonuna tiklar");
+        ReusableMethods.bekle(1);
 
         locator.emailTextbox.sendKeys(ConfigReader.getProperty("MerchantKeremGecerliMail"));
         extentTest.info("Geçerli bir email girer");
+        ReusableMethods.bekle(1);
 
         locator.passwordTextbox.sendKeys(ConfigReader.getProperty("MerchantKeremGecerliPassword"));
         extentTest.info("Geçerli bir password girer");
+        ReusableMethods.bekle(1);
 
-        // Singin butonu görünürlük
+             // Singin butonu görünürlük
         Assert.assertTrue(locator.signInButton.isDisplayed());
         extentTest.pass("Singin butonunun görünür olduğunu test eder");
 
         locator.signInButton.click();
         extentTest.info("Sing in butonuna tiklar");
+        ReusableMethods.bekle(3);
+
 
 
         //----Merchant Dashboard sayfasi açilmalidir----
@@ -63,9 +69,10 @@ public class TC21_2 extends CrossTestBaseRapor {
         Assert.assertTrue(locator.ticketLinki.isDisplayed());
         extentTest.pass("Menüde ticket bağlantısının görüntülendiğini test eder");
 
-                    // Ticket linkine tıklanır ve sayfanın doğru yüklendiği test edilir
+        // Ticket linkine tıklanır ve sayfanın doğru yüklendiği test edilir
         locator.ticketLinki.click();
         extentTest.info("Ticket bağlantisina tiklar");
+        ReusableMethods.bekle(2);
 
         WebElement ticketTitleYaziElementi = driver.findElement(By.className("h3"));
         String expectedtTitle = "Ticket";
@@ -80,6 +87,7 @@ public class TC21_2 extends CrossTestBaseRapor {
 
         locator.ticketAddButonu.click();
         extentTest.info("TicketAdd butonuna tiklar");
+        ReusableMethods.bekle(2);
 
         String expectedTicketAddUrl = ConfigReader.getProperty("TicketAddUrl");
         String actualTicketAddUrl = driver.getCurrentUrl();
@@ -90,14 +98,27 @@ public class TC21_2 extends CrossTestBaseRapor {
         extentTest.pass("TicketAdd başlığı görünür ve sayfanın başarılı yüklendiği test edilir");
 
 
+        //----Service: Delivery olarak seçilir----
+        Select select = new Select(locator.serviceDdmElementi);
+
+        Assert.assertTrue(locator.serviceDdmElementi.isDisplayed());
+        extentTest.pass("Service'nin görüntülendiğini test eder");
+
+        select.selectByVisibleText("Delivery");
+        extentTest.info("Service 'Delivery' seçilir");
+        ReusableMethods.bekle(2);
+
+
+
         //----Priority: High olarak seçilir----
-        Select select = new Select(locator.priorityDdmElementi);
+        select = new Select(locator.priorityDdmElementi);
 
         Assert.assertTrue(locator.priorityDdmElementi.isDisplayed());
         extentTest.pass("Priority'nin görüntülendiğini test eder");
 
         select.selectByVisibleText("High");
         extentTest.info("Priority 'High' seçilir");
+        ReusableMethods.bekle(2);
 
 
         //----Date görüntülenir (default bugün tarihi seçili olduğu test edilir "GG.AA.YYYY")----
@@ -110,6 +131,7 @@ public class TC21_2 extends CrossTestBaseRapor {
         String expectedDateValue = format1.format(new Date());
         Assert.assertEquals(actualDateValue,expectedDateValue);
         extentTest.pass("Date kutusunda bugünün tarihinin seçili olduğunu test eder");
+        ReusableMethods.bekle(2);
 
 
 
@@ -121,6 +143,7 @@ public class TC21_2 extends CrossTestBaseRapor {
 
         select.selectByVisibleText("Sales");
         extentTest.info("Department 'Sales' seçilir");
+        ReusableMethods.bekle(2);
 
 
 
@@ -130,16 +153,6 @@ public class TC21_2 extends CrossTestBaseRapor {
 
         locator.ticketAddSubjectBox.sendKeys("DenemeTest");
         extentTest.info("Subject kutusuna DenemeTest girilir");
-
-
-        //----Attached ->Dosya Seç butonu görüntülenir ve "Deneme.rtf" dosyası yüklenir ----
-        Assert.assertTrue(locator.attachedBoxDosyaSecButonu.isDisplayed());
-        extentTest.pass("Attached kutusunun görüntülendiğini test eder");
-
-        WebElement dosyaSecButonu = locator.attachedBoxDosyaSecButonu;
-        String filePath = System.getProperty("user.home")+"\\Desktop\\Deneme.rtf";
-        dosyaSecButonu.sendKeys(filePath);
-        extentTest.info("Deneme eklentisi eklenir");
         ReusableMethods.bekle(2);
 
 
@@ -150,7 +163,7 @@ public class TC21_2 extends CrossTestBaseRapor {
 
         locator.descriptionBox.sendKeys("MerhabaManuelTest");
         extentTest.info("Description kutusuna MerhabaManuelTest girilir");
-
+        ReusableMethods.bekle(2);
 
 
         //----Save butonuna basılır ----
@@ -159,31 +172,29 @@ public class TC21_2 extends CrossTestBaseRapor {
 
         locator.ticketAddSaveButonu.click();
         extentTest.info("Save butonuna tiklar");
+        ReusableMethods.bekle(1);
 
 
 
-        //----Hata mesajı kontrolü, "The service field is required."
-        String expectedUyariYazisi = "The service field is required.";
-        String actualUyariYazisi = locator.ticketAddServiceKayitUyariYazisi.getText();
-        Assert.assertEquals(actualUyariYazisi,expectedUyariYazisi);
-        extentTest.pass("Hata mesajı görüntülenir");
-
-
-
-        //----Kaydın başarılı olmadığını test eder
-        String expectedUrl2 = "https://qa.agileswiftcargo.com/merchant/support/create";
+        //----Onay mesajını okur ve Kaydın başarılı oldugunu test eder
+        WebElement onayMesaji = driver.findElement(By.xpath("//*[.='Ticket Insert successfully!']"));
+        ReusableMethods.bekle(1);
+        Assert.assertTrue(onayMesaji.isDisplayed());
+        extentTest.pass("Onay mesajı görüntülendiği test edilir");
+        String expectedUrl2 = "https://qa.agileswiftcargo.com/merchant/support/index";
         String actualUrl2 = driver.getCurrentUrl();
         Assert.assertEquals(actualUrl2,expectedUrl2);
-        extentTest.pass("Kayıt oluşturulamadığı test edildi");
-
+        extentTest.pass("Kayıt oluşturulduğu test edildi");
 
 
         //----Merchant logout olur----
         locator.profilResmi.click();
+        ReusableMethods.bekle(2);
         Assert.assertTrue(locator.loguotButonu.isDisplayed());
         extentTest.pass("Logout butonu başarılı bir şekilde görüntülendiğini test eder");
 
         locator.loguotButonu.click();
+        ReusableMethods.bekle(1);
         extentTest.info("Logout olur");
 
         String expectedAfterLogoutUrl = ConfigReader.getProperty("Url");
@@ -193,8 +204,6 @@ public class TC21_2 extends CrossTestBaseRapor {
 
 
         extentTest.info("Sayfayi kapatir");
-
-
 
 
 
