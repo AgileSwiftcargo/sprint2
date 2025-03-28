@@ -8,14 +8,14 @@ import pages.Locator;
 import utilities.ConfigReader;
 import utilities.CrossTestBaseRapor;
 
-public class TC28_2 extends CrossTestBaseRapor {
+public class TC28_7 extends CrossTestBaseRapor {
 
     Locator locator;
-
     @Test
-    public void parcelsBaglantiDogrulukTesti (){
-        extentTest = extentReports.createTest("Parcel Bağlantı Doğruluk Testi",
-                "Merchant, parcels bağlantısına tıkladığında doğru sayfa yüklenmelidir");
+    public void parcelsTelNoFiltreTesti (){
+        extentTest = extentReports.createTest("Parcels Tel No Filtresi Testi",
+                "Merchant, tel no filtresi doğru parcel'leri listelemelidir");
+
 
         // ----Kullanıcı, https://qa.agileswiftcargo.com/ adresine gider----
         driver.get(ConfigReader.getProperty("Url"));
@@ -25,7 +25,7 @@ public class TC28_2 extends CrossTestBaseRapor {
         //----Merchant gecerli bir e'mail ve geçerli bir password ile login olur----
         locator = new Locator();
 
-        // Login butonu görünürlük
+                // Login butonu görünürlük
         Assert.assertTrue(locator.loginButonu.isDisplayed());
         extentTest.pass("Login butonunun görünür olduğunu test eder");
 
@@ -38,7 +38,7 @@ public class TC28_2 extends CrossTestBaseRapor {
         locator.passwordTextbox.sendKeys(ConfigReader.getProperty("MerchantKeremGecerliPassword"));
         extentTest.info("Geçerli bir password girer");
 
-        // Singin butonu görünürlük
+                // Singin butonu görünürlük
         Assert.assertTrue(locator.signInButton.isDisplayed());
         extentTest.pass("Singin butonunun görünür olduğunu test eder");
 
@@ -61,6 +61,7 @@ public class TC28_2 extends CrossTestBaseRapor {
         extentTest.pass("Menüde parcels bağlantısının görüntülendiğini test eder");
 
 
+
         //----Parcels sayfasına tıklanır----
         parcelsBaglantiElementi.click();
         String expectedParcelsUrl = "https://qa.agileswiftcargo.com/merchant/parcel/index";
@@ -69,12 +70,54 @@ public class TC28_2 extends CrossTestBaseRapor {
         extentTest.pass("Parcels sayfasına gidildiğini test edilir");
 
 
+
         //----Sayfanın düzgün yüklendiği test edilir----
         WebElement parcelYaziElementi = driver.findElement(By.xpath("//*[.='Parcels ']"));
         String expectedParcelTitle = "Parcels";
         String actualParcelTitle = parcelYaziElementi.getText();
         Assert.assertEquals(actualParcelTitle,expectedParcelTitle);
         extentTest.pass("Parcels sayfasının düzgün yüklendiği test edilir");
+
+
+
+        //----Phone görüntülenir ve filtre için "111111111110" yazılır----
+        WebElement phoneBoxElementi = driver.findElement(By.id("parcel_customer_phone"));
+        Assert.assertTrue(phoneBoxElementi.isDisplayed());
+        extentTest.pass("Filtrede TelNo alani olduğu test edilir");
+
+        phoneBoxElementi.sendKeys("111111111110");
+        extentTest.info("Phone filtresinde '111111111110' yazilir");
+
+
+
+        //----Filtreme için filter tusuna basilir----
+        WebElement filterButonElementi = driver.findElement(By.xpath("//*[.=' Filter']"));
+        Assert.assertTrue(filterButonElementi.isDisplayed());
+        extentTest.pass("Filter butonu görüntülendiği test edilir");
+
+        filterButonElementi.click();
+        extentTest.info("Filter butonuna basılır");
+
+
+
+        //----Ekranda 1 sonuç listelendiği kontrol edilir "Showing 1 to 1 of 1 results"----
+        WebElement parcelsSonucYaziElementi =
+                driver.findElement(By.xpath("//*[@class='p-2 small']"));
+        String expectedSonucYazisi = "Showing 1 to 1 of 1 results";
+        String actualSonucYazisi = parcelsSonucYaziElementi.getText();
+        Assert.assertEquals(actualSonucYazisi,expectedSonucYazisi);
+        extentTest.pass("Ekranda 1 adet sonuc listelendigini test edilir");
+
+
+
+        //----Listenen parcelin Tel No doğrulanır----
+        WebElement phoneElementi =
+                driver.findElement(By.xpath("//*[.='111111111110']"));
+        String expectedPhone = "111111111110";
+        String actualPhone = phoneElementi.getText();
+        Assert.assertEquals(actualPhone,expectedPhone);
+        extentTest.pass("Tel no doğruluğu test edilir");
+
 
 
         //----Merchant logout olur----
@@ -98,4 +141,5 @@ public class TC28_2 extends CrossTestBaseRapor {
 
 
     }
+
 }
