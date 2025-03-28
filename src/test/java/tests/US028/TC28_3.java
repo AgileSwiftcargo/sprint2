@@ -13,7 +13,7 @@ public class TC28_3 extends CrossTestBaseRapor {
     Locator locator;
     @Test
     public void parcelsBilgileriGorunurlukTesti (){
-        extentTest = extentReports.createTest("Parcel Bilgileri",
+        extentTest = extentReports.createTest("Parcel Bilgileri Görünürlük Testi",
                 "Merchant, belirtilen bilgilere ait parceli listede görüntüleyebilmeli");
 
         // ----Kullanıcı, https://qa.agileswiftcargo.com/ adresine gider----

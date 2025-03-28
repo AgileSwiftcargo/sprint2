@@ -14,7 +14,7 @@ public class TC28_1 extends CrossTestBaseRapor {
 
     @Test
     public void parcelsBaglantiGorunurlukTesti (){
-        extentTest = extentReports.createTest("Parcel Görünürlük",
+        extentTest = extentReports.createTest("Parcel Görünürlük Testi",
                 "Merchant, parcels bağlantısını menüde görüntüleyebilmelidir");
 
         // ----Kullanıcı, https://qa.agileswiftcargo.com/ adresine gider----
