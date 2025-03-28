@@ -800,6 +800,9 @@ public class Locator {
     @FindBy(xpath = " //*[@class='select2-search__field']")
     public WebElement hubSelectEntry;
 
+    @FindBy(xpath = " //li[.='New York City']")
+    public WebElement hubSelectNewyork;
+
     //adres bilgisi//
     @FindBy(xpath = "//*[@id='address']")
     public WebElement adresButonu;

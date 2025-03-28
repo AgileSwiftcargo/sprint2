@@ -1,5 +1,6 @@
 package tests.US018;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -24,8 +25,7 @@ public class TC18_3 extends CrossTestBaseRapor {
             driver.get(ConfigReader.getProperty("LoginUrl"));
             Assert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/login");
             extentTest.pass("Kullanici Login Sayfasina gider");
-        }
-        catch (AssertionError e) {
+        } catch (AssertionError e) {
             captureFailure("Login Sayfasina Ulasilamiyor");
             Assert.fail(e.getMessage());
         }
@@ -43,8 +43,7 @@ public class TC18_3 extends CrossTestBaseRapor {
 
             Assert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/dashboard");
             extentTest.pass("Kullanici Merchant Dashboard Sayfasina ulasir");
-        }
-        catch (AssertionError e) {
+        } catch (AssertionError e) {
             captureFailure("Merchant Dashboard Sayfasina Ulasilamiyor");
             Assert.fail(e.getMessage());
         }
@@ -78,6 +77,8 @@ public class TC18_3 extends CrossTestBaseRapor {
         locator.profileUpdateAddress.sendKeys("Greenwich, London, UK");
         extentTest.info("Address Girer");
 
+        driver.findElement(By.xpath("//*[@id='image_id']")).sendKeys("C:/Users/alpay/Desktop/Alpay Ciftci.jpg");
+
         ReusableMethods.bekle(2);
 
         locator.profileUpdateSaveChange.click();
@@ -97,8 +98,7 @@ public class TC18_3 extends CrossTestBaseRapor {
             ReusableMethods.bekle(2);
             Assert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/");
             extentTest.pass("Logout Olur");
-        }
-        catch (AssertionError e) {
+        } catch (AssertionError e) {
             captureFailure("Logout Olamadi");
             Assert.fail(e.getMessage());
         }
