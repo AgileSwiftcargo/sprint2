@@ -521,7 +521,7 @@ public class Sunum extends CrossTestBaseRapor {
         extentTest.pass("Subject kutusunun görüntülendiğini test eder");
 
         locator.ticketAddSubjectBox.sendKeys("Kargo Durumu");
-        extentTest.info("Subject kutusuna DenemeTest girilir");
+        extentTest.info("Subject kutusuna Kargo Durumu girilir");
         ReusableMethods.bekle(2);
 
 
