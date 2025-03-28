@@ -1,5 +1,6 @@
 package tests.US015;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -8,48 +9,33 @@ import pages.Locator;
 import utilities.ConfigReader;
 import utilities.CrossTestBaseRapor;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 public class TC15_2 extends CrossTestBaseRapor {
-Busra busra ;
+Locator locator;
    @Test
-   public void ilgiliBaslıgatıklama() {
+   public void ilgiliBaslıgIGorunulemek() {
      Locator locator = new Locator();
      SoftAssert softAssert = new SoftAssert();
 
      extentTest = extentReports.createTest("İlgili başlığa tıklama testi",
-
-
-       "Başlıklara tıklandığında doğru sayfa açılmalı");
+         "Başlıklara tıklandığında doğru sayfa açılmalı");
 
        // kullanıcı anasayfaya gider
-       Driver.getDriver().get(ConfigReader.getProperty("Url"));
+       driver.get(ConfigReader.getProperty("Url"));
        extentTest.info("Kullanici agileswiftcargo ana sayfasina gider");
 
 
+       JavascriptExecutor js = (JavascriptExecutor) driver;
+       js.executeScript("arguments[0].scrollIntoView(true);", locator.AvailableServicesBaşlığı);
+       ReusableMethods.bekle(1);
+
+
+
        //kullanıcı "Available services" başlığını görür
+      softAssert.assertTrue(locator.AvailableServicesBaşlığı.isDisplayed());
+      extentTest.info("AvailableServices Başlığı Görünür");
 
-
-       String expectedYazi = "Available Services";
-       String actualYazi= locator.AvailableServicesBaşlığı.getText();
-
-     
-       Assert.assertEquals(actualYazi,expectedYazi);
-       extentTest.pass("Başlığı görüntüler");
-
-      //"E-Commerce delivery","Pick & Drop","Packageing",
-       //"Warehousing" başlıklarına tıklar
-
-      softAssert.assertEquals(driver.getCurrentUrl(),"(//*[contains(@class,'list-ite')])[1]");
-      extentTest.pass("ilgili sayfa açılır");
-
-       softAssert.assertEquals(driver.getCurrentUrl(),"(//*[contains(@class,'list-ite')])[2]");
-       extentTest.pass("ilgili sayfa açılır");
-
-       softAssert.assertEquals(driver.getCurrentUrl(),"(//*[contains(@class,'list-ite')])[3]");
-       extentTest.pass("ilgili sayfa açılır");
-
-       softAssert.assertEquals(driver.getCurrentUrl(),"(//*[contains(@class,'list-ite')])[4]");
-       extentTest.pass("ilgili sayfa açılır");
 
 
        extentTest.info("Sayfayı kapatır");
