@@ -850,7 +850,7 @@ public class Locator {
     public WebElement adminProfileMenu;
 
     //Admin profile edit butonu
-    @FindBy(xpath = "(//*[.=' Edit']")
+    @FindBy(xpath = "(//*[text()=' Edit']")
     public WebElement adminProfileEditButton;
 
     //Admin profile edit butonu
