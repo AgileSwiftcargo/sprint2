@@ -27,10 +27,11 @@ public class TC11_2 extends CrossTestBaseRapor {
         Assert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/");
         extentTest.pass("kullanıcı ana sayfaya gider");
         Locator locator = new Locator();
-        extentTest = extentReports.createTest("FQA tıklama testş," +
+        extentTest = extentReports.createTest("FQA tıklama testi," +
                 "sıkça  sorulan sorular görülür");
+        ReusableMethods.bekle(3);
 
-        locator.navFAQ.click();
+     locator.navFAQ.click();
         Assert.assertEquals(driver.getCurrentUrl(), "https://qa.agileswiftcargo.com/faq-list");
         extentTest.pass("FAQ basligina tiklar soruların acıldıgını kontrol eder");
         WebElement webElement = driver.findElement(By.xpath("//*[text()='  Have Question ']"));

@@ -74,7 +74,7 @@ public class TC3_2  extends CrossTestBaseRapor {
 
         extentTest.info("Sayfayi Kapatir");
 
-        ReusableMethods.bekle(2);
+
 
     }
 }
