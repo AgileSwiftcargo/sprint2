@@ -2,6 +2,7 @@ package tests.US006;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.Furkan;
@@ -26,7 +27,8 @@ public class TC6_2 extends CrossTestBaseRapor {
         extentTest.info("Kullanici Agile Swift Cargo ana sayfasina gider");
 
         Locator locator = new Locator();
-
+        Actions actions = new Actions(driver);
+        actions.moveToElement(locator.WhyAgileSwiftCargoText).perform();
         // Tüm Why Courier Boxlarını seçer
         List<WebElement> courierBoxes = driver.findElements(By.cssSelector(".why-courier-col"));
 

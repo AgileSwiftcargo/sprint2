@@ -1,0 +1,44 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+        Sunumda Calistirilacak Testler Burda Olacak
+-->
+
+
+<suite name="Sunum Testleri">
+
+    <test name="Chrome ile calisacak class'lar">
+        <parameter name="kullanilacakBrowser" value="chrome"></parameter>
+        <classes>
+            <class name="tests.US006.TC6_1"></class>
+            <class name="tests.US006.TC6_2"></class>
+            <class name="tests.US014.TC14_1"></class>
+            <class name="tests.US014.TC14_2"></class>
+            <class name="tests.US014.TC14_3"></class>
+            <class name="tests.US022.TC22_1"></class>
+            <class name="tests.US022.TC22_2"></class>
+            <class name="tests.US022.TC22_3"></class>
+            <class name="tests.US031.TC31_1"></class>
+            <class name="tests.US031.TC31_2"></class>
+            <class name="tests.US031.TC31_3"></class>
+        </classes>
+    </test>
+
+    <test name="Edge ile calisacak class'lar">
+        <parameter name="kullanilacakBrowser" value="edge"></parameter>
+        <classes>
+            <class name="tests.US006.TC6_1"></class>
+            <class name="tests.US006.TC6_2"></class>
+            <class name="tests.US014.TC14_1"></class>
+            <class name="tests.US014.TC14_2"></class>
+            <class name="tests.US014.TC14_3"></class>
+            <class name="tests.US022.TC22_1"></class>
+            <class name="tests.US022.TC22_2"></class>
+            <class name="tests.US022.TC22_3"></class>
+            <class name="tests.US031.TC31_1"></class>
+            <class name="tests.US031.TC31_2"></class>
+            <class name="tests.US031.TC31_3"></class>
+        </classes>
+    </test>
+
+</suite>
